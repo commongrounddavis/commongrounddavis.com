@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://daviscollegerepublicans.com/sitemap.xml
+Sitemap: https://commongrounddavis.com/sitemap.xml

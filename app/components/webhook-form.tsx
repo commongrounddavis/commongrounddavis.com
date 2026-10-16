@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { postDiscordWebhook } from "../lib/discord";
-import { SITE_NAME } from "../config/site";
+import { SITE_NAME, SITE_URL } from "../config/site";
 
 export type WebhookField = {
   name: string;
@@ -45,7 +45,7 @@ export function WebhookForm({
       "",
       ...lines,
       "",
-      `-# Sent via [${SITE_NAME}](<https://daviscollegerepublicans.com>)`,
+      `-# Sent via [${SITE_NAME}](<${SITE_URL}>)`,
       "---",
     ].join("\n");
 

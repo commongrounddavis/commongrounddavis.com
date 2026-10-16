@@ -11,7 +11,7 @@ export function meta(_: Route.MetaArgs) {
   return pageMeta({
     title: "Join",
     description:
-      "Join the Davis College Republicans at UC Davis — Discord, weekly meetings, and how to get involved.",
+      "Join Common Ground Davis at UC Davis — Discord, weekly meetings, and how to get involved.",
     path: "/join",
   });
 }

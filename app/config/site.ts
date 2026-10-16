@@ -1,8 +1,8 @@
 /** Club links / public contact info that may change. */
-export const SITE_NAME = "Davis College Republicans";
-export const SITE_URL = "https://daviscollegerepublicans.com";
+export const SITE_NAME = "Common Ground Davis";
+export const SITE_URL = "https://commongrounddavis.com";
 export const SITE_DESCRIPTION =
-  "UC Davis College Republicans — weekly meetings, community, and conservative politics for students at UC Davis.";
+  "Common Ground Davis — a UC Davis political debate club for students who disagree and want to understand each other.";
 /** Absolute URL for Open Graph / Discord / Twitter link previews. */
 export const SITE_OG_IMAGE = `${SITE_URL}/og-image.jpg`;
 
@@ -65,15 +65,15 @@ export const WEBSITE_SUPPORT_LABEL = (() => {
  */
 export const WEBSITE_MAINTAINER_NAME = "Vijit Dua";
 export const WEBSITE_MAINTAINER_URL = "https://vijitdua.com";
-export const DOMAIN_OWNER_NAME = "David Brownlee";
-export const DOMAIN_OWNER_DISCORD_HANDLE = "dalekvaderofborg";
+export const DOMAIN_OWNER_NAME = "Vijit Dua";
+export const DOMAIN_OWNER_DISCORD_HANDLE = "vijitdua";
 export const GITHUB_REPO_URL =
-  "https://github.com/Davis-College-Republicans/daviscollegerepublicans.com";
+  "https://github.com/commongrounddavis/commongrounddavis.com";
 export const GITHUB_REPO_LABEL = (() => {
   const url = new URL(GITHUB_REPO_URL);
   return `${url.host}${url.pathname}`.replace(/\/$/, "");
 })();
-export const TECHNICAL_OWNERS_LAST_UPDATED = "Oct 6, 2026";
+export const TECHNICAL_OWNERS_LAST_UPDATED = "Oct 15, 2026";
 
 /**
  * Discord webhooks for /contact and /join.

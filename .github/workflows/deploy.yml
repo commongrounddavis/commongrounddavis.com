@@ -54,4 +54,4 @@ jobs:
           tag="v$d.$n"
           git tag -a "$tag" -m "$tag"
           git push origin "$tag"
-          gh release create "$tag" --title "$tag" --notes "https://daviscollegerepublicans.com"
+          gh release create "$tag" --title "$tag" --notes "https://commongrounddavis.com"

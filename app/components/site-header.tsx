@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router";
+import { SITE_NAME } from "../config/site";
 
 const NAV = [
   { to: "/#about", label: "About" },
@@ -63,9 +64,7 @@ export function SiteHeader(): React.ReactNode {
           <span className="site-header-logo">
             <img src="/DCR.webp" alt="" width={48} height={48} />
           </span>
-          <span className="site-header-brand font-brand">
-            Davis College Republicans
-          </span>
+          <span className="site-header-brand font-brand">{SITE_NAME}</span>
         </Link>
 
         <button

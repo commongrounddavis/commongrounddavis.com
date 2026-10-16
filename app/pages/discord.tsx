@@ -8,7 +8,7 @@ export function meta(_: Route.MetaArgs) {
   return [
     ...pageMeta({
       title: "Discord",
-      description: "Join the Davis College Republicans Discord server.",
+      description: "Join the Common Ground Davis Discord server.",
       path: "/discord",
     }),
     // GitHub Pages has no custom HTTP 3xx; browser refresh + JS replace below.

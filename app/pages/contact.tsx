@@ -11,7 +11,7 @@ export function meta(_: Route.MetaArgs) {
   return pageMeta({
     title: "Contact",
     description:
-      "Contact the Davis College Republicans — Discord, membership, and website questions.",
+      "Contact Common Ground Davis — Discord, membership, and website questions.",
     path: "/contact",
   });
 }
