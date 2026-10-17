@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://commongrounddavis.com/</loc></url>
-  <url><loc>https://commongrounddavis.com/contact</loc></url>
+  <url><loc>https://commongrounddavis.com/about</loc></url>
+  <url><loc>https://commongrounddavis.com/debate-format</loc></url>
+  <url><loc>https://commongrounddavis.com/leadership</loc></url>
+  <url><loc>https://commongrounddavis.com/leadership/vijit-dua</loc></url>
+  <url><loc>https://commongrounddavis.com/leadership/joshua-harris</loc></url>
+  <url><loc>https://commongrounddavis.com/leadership/joey-lee</loc></url>
   <url><loc>https://commongrounddavis.com/join</loc></url>
+  <url><loc>https://commongrounddavis.com/contact</loc></url>
   <url><loc>https://commongrounddavis.com/support</loc></url>
+  <url><loc>https://commongrounddavis.com/discord</loc></url>
 </urlset>

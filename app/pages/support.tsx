@@ -2,14 +2,9 @@ import { useState } from "react";
 import { Link } from "react-router";
 import type { Route } from "./+types/support";
 import {
-  DOMAIN_OWNER_DISCORD_HANDLE,
-  DOMAIN_OWNER_NAME,
-  GITHUB_REPO_LABEL,
-  GITHUB_REPO_URL,
+  DISCORD_INVITE_URL,
   SITE_NAME,
-  TECHNICAL_OWNERS_LAST_UPDATED,
   WEBSITE_MAINTAINER_NAME,
-  WEBSITE_MAINTAINER_URL,
   WEBSITE_SUPPORT_DISCORD_HANDLE,
   WEBSITE_SUPPORT_LABEL,
   WEBSITE_SUPPORT_URL,
@@ -27,8 +22,15 @@ export function meta(_: Route.MetaArgs) {
 
 type Step = "start" | "website" | "discord" | "external";
 
+const DISCORD_LIVE = Boolean(DISCORD_INVITE_URL);
+
 export default function Support(): React.ReactNode {
   const [step, setStep] = useState<Step>("start");
+
+  // Discord not live → skip the "are you in the Discord?" question.
+  const goWebsite = () => setStep(DISCORD_LIVE ? "website" : "external");
+  const goBack = () =>
+    setStep(step === "website" || !DISCORD_LIVE ? "start" : "website");
 
   return (
     <section className="home-section page-narrow support-page">
@@ -50,7 +52,7 @@ export default function Support(): React.ReactNode {
               <button
                 type="button"
                 className="support-choice"
-                onClick={() => setStep("website")}
+                onClick={goWebsite}
               >
                 <span>
                   <strong>Something wrong with the website?</strong>
@@ -101,13 +103,8 @@ export default function Support(): React.ReactNode {
           <>
             <h1 className="title-plain">Website problem</h1>
             <p>
-              If you’re in the Common Ground Davis Discord, ping @
-              {WEBSITE_SUPPORT_DISCORD_HANDLE} with the issue. He is the
-              current club website maintainer
-              <a className="support-footnote" href="#technical-owners">
-                *
-              </a>
-              .
+              Ping @{WEBSITE_SUPPORT_DISCORD_HANDLE} in the Discord with the
+              issue. He is the current club website maintainer.
             </p>
             <Link className="support-action" to="/discord">
               Open Discord →
@@ -122,45 +119,17 @@ export default function Support(): React.ReactNode {
               Send your technical issue to {WEBSITE_MAINTAINER_NAME}, the
               current {SITE_NAME} website maintainer, through:
             </p>
-            <a className="support-action" href={WEBSITE_SUPPORT_URL}>
+            <a className="support-action" href={WEBSITE_SUPPORT_URL} target="_blank" rel="noopener noreferrer">
               Visit {WEBSITE_SUPPORT_LABEL} →
             </a>
           </>
         ) : null}
 
         {step !== "start" ? (
-          <button
-            type="button"
-            className="support-back"
-            onClick={() =>
-              setStep(step === "website" ? "start" : "website")
-            }
-          >
+          <button type="button" className="support-back" onClick={goBack}>
             ← Back
           </button>
         ) : null}
-      </div>
-
-      <div className="support-meta" id="technical-owners">
-        <h2 className="title-plain support-meta-title">
-          <span aria-hidden="true">*</span>Current Common Ground Davis Website Maintainers
-        </h2>
-        <p>
-          Webpage Maintainer:{" "}
-          <a href={WEBSITE_MAINTAINER_URL}>{WEBSITE_MAINTAINER_NAME}</a>{" "}
-          (Discord{" "}
-          <Link to="/discord">@{WEBSITE_SUPPORT_DISCORD_HANDLE}</Link>)
-        </p>
-        <p>
-          Domain Owner: {DOMAIN_OWNER_NAME} (Discord{" "}
-          <Link to="/discord">@{DOMAIN_OWNER_DISCORD_HANDLE}</Link>)
-        </p>
-        <p>
-          Source: <a href={GITHUB_REPO_URL}>{GITHUB_REPO_LABEL}</a>
-        </p>
-        <p className="support-meta-updated">
-          Updated {TECHNICAL_OWNERS_LAST_UPDATED}
-        </p>
       </div>
     </section>
   );

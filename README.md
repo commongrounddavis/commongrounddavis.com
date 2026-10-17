@@ -35,6 +35,7 @@ This repository powers the frontend code behind the Common Ground Davis [commong
   - [Branches](#branches)
   - [Working on `develop`](#working-on-develop)
   - [Shipping to production](#shipping-to-production)
+- [Interest Form + Discord notify](#interest-form--discord-notify)
 - [Development Notes](#development-notes)
   - [Getting Started](#getting-started)
   - [Building for Production](#building-for-production)
@@ -48,7 +49,9 @@ The most up-to-date info is at [commongrounddavis.com](https://commongrounddavis
 
 ## Condensed Mission Statement / About
 
-Common Ground Davis brings together UC Davis students who disagree politically, into structured debates built around the Steelman argument - before presenting an argument members must accurately present the strongest interpretation of the opposing argument and explain why a reasonable person may hold that beleif. We are founded & led by two co-leaders who disagree politically and we practice what we preach.
+Common Ground Davis brings together UC Davis students who disagree politically, into structured debates built around the Steelman argument - before presenting an argument members must accurately present the strongest interpretation of the opposing argument and explain why a reasonable person may hold that beleif.
+
+We are founded & led by two co-leaders who disagree politically and practice what they preach.
 
 ## Full Mission Statement / About
 
@@ -99,9 +102,35 @@ Ideally a new content contact is listed above (and in [`app/config/site.ts`](app
 
 ---
 
+# Interest Form + Discord notify
+
+Public join intake is a **Google Form** (UC Davis accounts only). [`/join`](https://commongrounddavis.com/join) links out to it. Config: [`app/config/forms.ts`](app/config/forms.ts) (`INTEREST_FORM_URL`). Contact is **mailto** to current co-leads (no second Form for v1).
+
+### Create / update the Interest Form
+
+1. Google Forms → new form (or edit the existing one). Questions are listed in `forms.ts` under `INTEREST_FORM.questions` — keep the live Form in sync when you change that list.
+2. Settings → **Restrict to users in `ucdavis.edu`** (organization only).
+3. Responses → Link to Sheets.
+4. Copy the “Send” / share link → `INTEREST_FORM_URL` in `forms.ts`.
+5. Ongoing member **topic ideas** go in Discord `#topic-ideas` — not this Form.
+
+### Apps Script → Discord ping (optional)
+
+Only after the CGD Discord exists. **Apps Script only** (not Zapier/Make as the documented default). Webhook URL stays in Script Properties — never in this repo.
+
+1. Open the response Sheet → Extensions → Apps Script.
+2. `onFormSubmit` trigger: build a short message from the new row → `UrlFetchApp.fetch(webhookUrl, …)` to a Discord webhook.
+3. Store the webhook in **Script Properties** as `DISCORD_WEBHOOK_URL`.
+4. Installable trigger: From spreadsheet → On form submit.
+5. Test with a dummy response.
+
+Until Discord is live, Form → Sheet alone is fine. Leave `DISCORD_INVITE_URL` empty in [`app/config/site.ts`](app/config/site.ts); `/discord` shows “coming soon” and Discord stays out of the primary nav.
+
+---
+
 # Code Architecture and Getting Started
 
-This is a Vite + React Router (framework mode) + Tailwind CSS v4 static site. Site knobs (Discord invite, webhooks, meetings copy, maintainer strings) live in [`app/config/site.ts`](app/config/site.ts). For install / `npm run dev`, see [Getting Started](#getting-started) under Development Notes.
+This is a Vite + React Router (framework mode) + Tailwind CSS v4 static site. Site knobs live under [`app/config/`](app/config/). For install / `npm run dev`, see [Getting Started](#getting-started) under Development Notes.
 
 ## Infrastructure / Ownership
 
@@ -114,7 +143,8 @@ flowchart LR
 ```
 
 ### Static Generation & GitHub Pages
-- We deploy by using **React Router with `ssr: false` + `prerender`** ([`react-router.config.ts`](react-router.config.ts)). That bakes real HTML for `/`, `/contact`, `/join`, `/support`, and `/discord` into `build/client`. The build script then copies React Router’s SPA shell to `404.html` so unknown paths get a real **HTTP 404** from GitHub Pages (SPA boots → `$` route → NotFound UI — not a fake 200).
+- We deploy by using **React Router with `ssr: false` + `prerender`** ([`react-router.config.ts`](react-router.config.ts)). That bakes real HTML for `/`, `/about`, `/debate-format`, `/leadership`, `/join`, `/contact`, `/support`, and `/discord` into `build/client`. The build script then copies React Router’s SPA shell to `404.html` so unknown paths get a real **HTTP 404** from GitHub Pages (SPA boots → `$` route → NotFound UI — not a fake 200).
+- Site knobs live under [`app/config/`](app/config/): `site.ts` (links, Discord invite, maintainers), `meetings.ts`, `leadership.ts` (people + terms), `forms.ts` (Google Form), `format.ts` (debate cycle — also feeds the home page summary), `faq.ts` (FAQ items per page), `about.ts` (README mission, verbatim).
 - `public/CNAME` tells Pages the custom domain is `commongrounddavis.com`. `public/.nojekyll` tells Pages not to run Jekyll on the uploaded files (avoids Jekyll mangling asset paths).
 - The generated static content is then hosted on GitHub Pages by **[`.github/workflows/deploy.yml`](.github/workflows/deploy.yml)**: on every push to `production`, Actions runs `npm ci` → `npm run build` → uploads `build/client` → `actions/deploy-pages` → creates an incrementing dated tag/release (`v2026.10.07.1`, `.2` same day, etc.) as `github-actions[bot]`.
 

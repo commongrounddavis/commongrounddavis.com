@@ -9,11 +9,11 @@
 }
 
 :root {
-  --color-brand: #c41230;
-  --color-brand-track: rgba(196, 18, 48, 0.2);
+  --color-brand: #2a66c6;
+  --color-brand-track: rgba(42, 102, 198, 0.25);
   --color-surface: #f5f5f5;
-  --color-ink: #141414;
-  --color-ink-muted: #4a4a4a;
+  --color-ink: #2a2a2a;
+  --color-ink-muted: #5c5c5c;
   --color-on-brand: #ffffff;
   --font-sans: "Source Sans 3", ui-sans-serif, system-ui, sans-serif;
   --page-gutter: 1.5rem;
@@ -65,8 +65,8 @@ body {
 }
 
 .shell-logo {
-  width: 5rem;
-  height: 5rem;
+  width: 7rem;
+  height: 7rem;
   object-fit: contain;
   animation: logo-bounce 3s ease-in-out infinite;
 }

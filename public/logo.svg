@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 40 512 512" width="512" height="512" role="img" aria-labelledby="cg-title">
+  <title id="cg-title">Common Ground Davis</title>
+  <defs>
+    <mask id="clasp-gap" maskUnits="userSpaceOnUse" x="0" y="0" width="512" height="560">
+      <rect width="512" height="560" fill="#fff"/>
+      <circle cx="256" cy="339" r="31" fill="#000"/>
+    </mask>
+    <path id="torso" d="M26 374.5 C30 318 42 262 74 232 C92 216 114 224 126 241 L166 297 C172 305 180 308 190 311 L245 326 L247 350 L190 337 C170 334 158 328 148 320 L126 306 C122 328 114 352 108 374.5 Z"/>
+  </defs>
+  <g mask="url(#clasp-gap)">
+    <circle cx="116" cy="182" r="42" fill="#2A66C6"/>
+    <use href="#torso" fill="#2A66C6"/>
+    <circle cx="396" cy="182" r="42" fill="#D13533"/>
+    <use href="#torso" fill="#D13533" transform="translate(512 0) scale(-1 1)"/>
+  </g>
+  <circle cx="256" cy="339" r="25" fill="#E8B23A"/>
+  <line x1="16" y1="377" x2="496" y2="377" stroke="#8C8C8C" stroke-width="5" stroke-linecap="round"/>
+  <text x="256" y="430" text-anchor="middle" font-family="Montserrat, 'Helvetica Neue', Arial, sans-serif" font-size="44" font-weight="800" letter-spacing="2" fill="#333333">COMMON GROUND</text>
+  <text x="256" y="474" text-anchor="middle" font-family="Montserrat, 'Helvetica Neue', Arial, sans-serif" font-size="26" font-weight="600" letter-spacing="12" fill="#8C8C8C">DAVIS</text>
+</svg>

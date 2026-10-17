@@ -1,9 +1,9 @@
 /* Offline shell for navigations when the network is unreachable. */
-const CACHE = "dcr-offline-v6";
+const CACHE = "cgd-offline-v2";
 const PRECACHE = [
   "/offline.html",
   "/offline.css",
-  "/DCR.webp",
+  "/logo.svg",
   "/fonts/source-sans-3.woff2",
 ];
 

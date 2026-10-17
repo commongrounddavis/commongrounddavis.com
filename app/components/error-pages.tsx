@@ -11,7 +11,7 @@ function StatusShell({
     <div className="error-page">
       <img
         className="logo-bounce"
-        src="/DCR.webp"
+        src="/logo.svg"
         alt=""
         width={80}
         height={80}
