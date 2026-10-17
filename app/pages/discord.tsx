@@ -62,7 +62,7 @@ export default function DiscordPage(): React.ReactNode {
         height={80}
       />
       <p>Redirecting to Discord…</p>
-      <a href={DISCORD_INVITE_URL} className="brand-link" target="_blank" rel="noopener noreferrer">
+      <a href={DISCORD_INVITE_URL} className="brand-link" target="_blank" rel="noopener">
         Continue to Discord
       </a>
     </main>

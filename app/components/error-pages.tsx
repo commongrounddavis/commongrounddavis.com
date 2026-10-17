@@ -27,7 +27,7 @@ function StatusShell({
           <a
             href="https://services.vijitdua.com"
             target="_blank"
-            rel="noopener noreferrer"
+            rel="noopener"
           >
             services.vijitdua.com
           </a>{" "}

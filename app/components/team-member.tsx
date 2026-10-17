@@ -62,7 +62,7 @@ function BioInline({ text }: { text: string }): React.ReactNode {
           className="brand-link"
           href={href}
           target="_blank"
-          rel="noopener noreferrer"
+          rel="noopener"
         >
           {match[1]}
         </a>
@@ -106,14 +106,14 @@ export function PersonLinks({
   return (
     <div className="team-links">
       {person.email ? (
-        <a href={`mailto:${person.email}`} target="_blank" rel="noopener noreferrer">
+        <a href={`mailto:${person.email}`} target="_blank" rel="noopener">
           <MailIcon />
           {person.email}
         </a>
       ) : null}
       {!emailOnly && person.discordHandle ? (
         discordUrl ? (
-          <a href={discordUrl} target="_blank" rel="noopener noreferrer">
+          <a href={discordUrl} target="_blank" rel="noopener">
             <DiscordIcon />@{person.discordHandle}
           </a>
         ) : (
@@ -125,13 +125,13 @@ export function PersonLinks({
       {emailOnly || compact ? null : (
         <>
           {person.twitter ? (
-            <a href={person.twitter} target="_blank" rel="noopener noreferrer">
+            <a href={person.twitter} target="_blank" rel="noopener">
               <XIcon />
               {handleOf(person.twitter)}
             </a>
           ) : null}
           {person.linkedin ? (
-            <a href={person.linkedin} target="_blank" rel="noopener noreferrer">
+            <a href={person.linkedin} target="_blank" rel="noopener">
               <LinkedInIcon />
               {handleOf(person.linkedin)}
             </a>
@@ -140,14 +140,14 @@ export function PersonLinks({
             <a
               href={person.instagram}
               target="_blank"
-              rel="noopener noreferrer"
+              rel="noopener"
             >
               <InstagramIcon />
               {handleOf(person.instagram)}
             </a>
           ) : null}
           {person.url ? (
-            <a href={person.url} target="_blank" rel="noopener noreferrer">
+            <a href={person.url} target="_blank" rel="noopener">
               <LinkIcon />
               {hostOf(person.url)}
             </a>

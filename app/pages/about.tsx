@@ -60,7 +60,7 @@ function withNameLinks(text: string): React.ReactNode[] {
 
 /** Render README founding string with markdown-ish link + italics. */
 function FoundingParagraph(): React.ReactNode {
-  const essayLabel = "an essay on political polarization at UC Davis";
+  const essayLabel = "an independent journal piece";
   const parts = ABOUT_FOUNDING.split(
     `[${essayLabel}](${FOUNDING_ESSAY_URL})`,
   );
@@ -74,7 +74,7 @@ function FoundingParagraph(): React.ReactNode {
         className="brand-link"
         href={FOUNDING_ESSAY_URL}
         target="_blank"
-        rel="noopener noreferrer"
+        rel="noopener"
       >
         {essayLabel}
       </a>
@@ -92,8 +92,9 @@ export default function About(): React.ReactNode {
         <h1>Mission statement</h1>
         <div className="home-about-row" style={{ marginTop: "1.5rem" }}>
           <div className="prose-stack" style={{ flex: 1, marginTop: 0 }}>
-            <p>{ABOUT_CONDENSED}</p>
-            <p>{ABOUT_FULL[0]}</p>
+            {ABOUT_CONDENSED.map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
           </div>
           <div className="home-about-marks">
             <span className="home-about-mark home-about-mark-cgd">

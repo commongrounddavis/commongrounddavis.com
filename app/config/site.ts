@@ -43,7 +43,7 @@ export function pageMeta({
  * Discord invite. Empty = Discord not live yet (hide from nav; /discord = coming soon).
  * Never leave an old club’s invite here.
  */
-export const DISCORD_INVITE_URL = "discord.gg/commongrounddavis";
+export const DISCORD_INVITE_URL = "https://discord.gg/XpQzH2aasN";
 
 /**
  * Footer social bar. Internal paths use client routing; full URLs open externally.

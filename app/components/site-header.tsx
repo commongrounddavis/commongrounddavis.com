@@ -159,7 +159,7 @@ export function SiteHeader(): React.ReactNode {
                       role="menuitem"
                       href={to}
                       target="_blank"
-                      rel="noopener noreferrer"
+                      rel="noopener"
                     >
                       {label} ↗
                     </a>

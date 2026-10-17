@@ -38,7 +38,7 @@ function DotNav({
           {to.startsWith("/") ? (
             <Link to={to}>{label}</Link>
           ) : (
-            <a href={to} target="_blank" rel="noopener noreferrer">
+            <a href={to} target="_blank" rel="noopener">
               {label}
             </a>
           )}

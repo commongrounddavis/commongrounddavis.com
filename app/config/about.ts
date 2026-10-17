@@ -1,9 +1,12 @@
 /**
- * VERBATIM from README.md — keep in sync when either changes.
+ * Verbatim from README.md "What is Common Ground Davis" — keep in sync.
+ * Spelling only is corrected in both places.
  */
 
-export const ABOUT_CONDENSED =
-  "Common Ground Davis brings together UC Davis students who disagree politically, into structured debates built around the Steelman argument - before presenting an argument members must accurately present the strongest interpretation of the opposing argument and explain why a reasonable person may hold that beleif. We are founded & led by two co-leaders who disagree politically and we practice what we preach.";
+export const ABOUT_CONDENSED = [
+  "Common Ground Davis brings together UC Davis students who disagree politically, into structured debates built around the Steelman argument - before presenting an argument members must accurately present the strongest interpretation of the opposing argument and explain why a reasonable person may hold that belief.",
+  "We are founded & led by two co-leaders who disagree politically and practice what they preach.",
+] as const;
 
 export const ABOUT_FULL = [
   "Common Ground Davis is a political debate club at UC Davis for students who disagree and want to understand each other.",
@@ -13,13 +16,10 @@ export const ABOUT_FULL = [
   "Our goal isn't to get everyone to agree. It's to build a space where members can disagree and still understand each other. Members leave with sharper arguments, a clearer way to say what they actually think, and less fear of political conversations with their peers. And we hold ourselves to the same standard: this club is founded and co-led by two students who disagree politically, who have civil conversations aimed at understanding each other's views, and who want to promote that culture across our campus.",
 ] as const;
 
-export const ABOUT_FOUNDING =
-  'After Vijit Dua published [an essay on political polarization at UC Davis](https://vijitdua.com/blog/WBTZE6mR), Joshua Harris DMed several points he disagreed with. They talked it out civilly — agreed to disagree on some things, found real overlap on others, and kept coming back to the same wish: more people on this campus should be able to disagree like that. Common Ground Davis grew out of that conversation. The two still disagree politically; they co-lead the club anyway, because that *is* the point.';
-
 export const FOUNDING_ESSAY_URL = "https://vijitdua.com/blog/WBTZE6mR";
 
-/** Home‑page tease (paraphrase of ABOUT_CONDENSED — not README‑verbatim). */
-export const HOME_ABOUT_TEASE = [
-  "Common Ground Davis brings together UC Davis students who disagree politically, into structured debates built around the Steelman argument - before presenting an argument members must accurately present the strongest interpretation of the opposing argument and explain why a reasonable person may hold that beleif.",
-  "We are founded & led by two co-leaders who disagree politically and practice what they preach.",
-];
+export const ABOUT_FOUNDING =
+  "After Vijit Dua published [an independent journal piece](https://vijitdua.com/blog/WBTZE6mR) on political polarization at UC Davis and Joshua Harris reached out to him regarding the points in the article where he disagreed with Vijit. They talked it out civilly — agreed to disagree on some points, but also found overlap on several other points and were better able to understand the premise behind each other's beliefs. They kept coming back to the same wish: that more people on this campus would learn to handle disagreements in the same manner and Common Ground Davis grew out of that conversation. The two still disagree politically, yet they co-lead the club because that *is* the point.";
+
+/** Home page uses the same condensed lines. */
+export const HOME_ABOUT_TEASE = ABOUT_CONDENSED;

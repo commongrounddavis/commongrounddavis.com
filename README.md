@@ -49,7 +49,7 @@ The most up-to-date info is at [commongrounddavis.com](https://commongrounddavis
 
 ## Condensed Mission Statement / About
 
-Common Ground Davis brings together UC Davis students who disagree politically, into structured debates built around the Steelman argument - before presenting an argument members must accurately present the strongest interpretation of the opposing argument and explain why a reasonable person may hold that beleif.
+Common Ground Davis brings together UC Davis students who disagree politically, into structured debates built around the Steelman argument - before presenting an argument members must accurately present the strongest interpretation of the opposing argument and explain why a reasonable person may hold that belief.
 
 We are founded & led by two co-leaders who disagree politically and practice what they preach.
 
@@ -67,7 +67,7 @@ Our goal isn't to get everyone to agree. It's to build a space where members can
 
 ## How the club was founded
 
-After Vijit Dua published [an essay on political polarization at UC Davis](https://vijitdua.com/blog/WBTZE6mR), Joshua Harris DMed several points he disagreed with. They talked it out civilly — agreed to disagree on some things, found real overlap on others, and kept coming back to the same wish: more people on this campus should be able to disagree like that. Common Ground Davis grew out of that conversation. The two still disagree politically; they co-lead the club anyway, because that *is* the point.
+After Vijit Dua published [an independent journal piece](https://vijitdua.com/blog/WBTZE6mR) on political polarization at UC Davis and Joshua Harris reached out to him regarding the points in the article where he disagreed with Vijit. They talked it out civilly — agreed to disagree on some points, but also found overlap on several other points and were better able to understand the premise behind each other's beliefs. They kept coming back to the same wish: that more people on this campus would learn to handle disagreements in the same manner and Common Ground Davis grew out of that conversation. The two still disagree politically, yet they co-lead the club because that *is* the point.
 
 ---
 
@@ -114,17 +114,18 @@ Public join intake is a **Google Form** (UC Davis accounts only). [`/join`](http
 4. Copy the “Send” / share link → `INTEREST_FORM_URL` in `forms.ts`.
 5. Ongoing member **topic ideas** go in Discord `#topic-ideas` — not this Form.
 
-### Apps Script → Discord ping (optional)
+### Apps Script → Discord ping
 
-Only after the CGD Discord exists. **Apps Script only** (not Zapier/Make as the documented default). Webhook URL stays in Script Properties — never in this repo.
+Source: [`scripts/interest-form-discord.gs`](scripts/interest-form-discord.gs). It posts each new response into Discord as one embed (club blue, one field per question, long answers split so they fit Discord's limits). The webhook URL stays in Apps Script **Script Properties** — never in this repo.
 
-1. Open the response Sheet → Extensions → Apps Script.
-2. `onFormSubmit` trigger: build a short message from the new row → `UrlFetchApp.fetch(webhookUrl, …)` to a Discord webhook.
-3. Store the webhook in **Script Properties** as `DISCORD_WEBHOOK_URL`.
-4. Installable trigger: From spreadsheet → On form submit.
-5. Test with a dummy response.
+1. In the Common Ground Davis Discord, open the channel that should get form pings → Integrations → Webhooks → New Webhook. Copy the webhook URL. Do not commit it.
+2. Open the Interest Form → Extensions → Apps Script. Delete the placeholder `Code.gs` contents and paste in `scripts/interest-form-discord.gs`.
+3. Project Settings (gear) → Script Properties → Add property. Name: `DISCORD_WEBHOOK_URL`. Value: the webhook URL from step 1. Optional second property: `RESPONSE_SHEET_URL`, the Google Sheet link for the form responses. When it is set, every Discord post includes that link under "Full responses" so leads can open the whole sheet. If you skip it, the script uses the sheet already linked to the Form, when there is one.
+4. In the editor, select `installTrigger` and Run. Approve the permissions (it needs to read form responses and call Discord).
+5. Select `sendTest` and Run. A "New interest form" message should show up in that channel. Delete the test message.
+6. Submit one real test response on the form to confirm a live submission posts too.
 
-Until Discord is live, Form → Sheet alone is fine. Leave `DISCORD_INVITE_URL` empty in [`app/config/site.ts`](app/config/site.ts); `/discord` shows “coming soon” and Discord stays out of the primary nav.
+Each Discord field is the question title, then the answer in bold, then the question's description as a quote under it. That description is the gray text under the question in the form editor. Google only keeps it on the Form, not in the response Sheet, so paste the script into the Form (Extensions → Apps Script), not the Sheet. Checkbox answers and grid rows are included. The Sheet path still posts answers, but without descriptions.
 
 ---
 
@@ -154,7 +155,7 @@ flowchart LR
 
 - Domain ownership: The domain [commongrounddavis.com](https://commongrounddavis.com) is owned by Vijit Dua (@vijitdua on discord) as of October 15, 2026
 - Costs: $10/yr
-- Connection to static data: This domain points directly to our github pages, with no proxy enabled (no IP address to hide, no need for unecessary added latency)
+- Connection to static data: This domain points directly to our github pages, with no proxy enabled (no IP address to hide, no need for unnecessary added latency)
 
 **Current DNS setup (as of Oct 2026)** — Cloudflare DNS only, **proxy off** (grey cloud) on every record that points at GitHub Pages. Do not orange-cloud / proxy these; Pages needs to see the real client TLS handshake for custom-domain HTTPS.
 

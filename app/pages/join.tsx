@@ -35,7 +35,7 @@ export default function Join(): React.ReactNode {
             <a
               href={INTEREST_FORM_URL}
               target="_blank"
-              rel="noopener noreferrer"
+              rel="noopener"
               className="button-brand"
             >
               Click to join
@@ -47,7 +47,7 @@ export default function Join(): React.ReactNode {
           <p>Interest form coming soon. Meanwhile, email a co-lead:</p>
           <div className="contact-row">
             {coLeads.map(({ person }) => (
-              <a key={person.slug} href={`mailto:${person.email}`} target="_blank" rel="noopener noreferrer">
+              <a key={person.slug} href={`mailto:${person.email}`} target="_blank" rel="noopener">
                 {person.name} ({person.email})
               </a>
             ))}

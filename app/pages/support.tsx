@@ -119,7 +119,7 @@ export default function Support(): React.ReactNode {
               Send your technical issue to {WEBSITE_MAINTAINER_NAME}, the
               current {SITE_NAME} website maintainer, through:
             </p>
-            <a className="support-action" href={WEBSITE_SUPPORT_URL} target="_blank" rel="noopener noreferrer">
+            <a className="support-action" href={WEBSITE_SUPPORT_URL} target="_blank" rel="noopener">
               Visit {WEBSITE_SUPPORT_LABEL} →
             </a>
           </>

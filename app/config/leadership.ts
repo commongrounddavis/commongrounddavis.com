@@ -35,9 +35,9 @@ export type Person = {
 
 export type Tenure = {
   personSlug: string;
-  role: "Co-Lead / President" | "Treasurer" | string;
+  role: string;
   /** CSI / AggieLife title on paper (Primary / Secondary / Treasurer). */
-  csiTitle?: "Primary" | "Secondary" | "Treasurer" | string;
+  csiTitle?: string;
   start: string;
   end: string | null;
   /** Optional one‑liners shown in the timeline next to the join / leave event. */
@@ -92,10 +92,10 @@ export const PEOPLE: Person[] = [
 export const TENURES: Tenure[] = [
   { personSlug: "vijit-dua", role: "Co-Lead / President", csiTitle: "Primary Leader", start: "2026-09-23", end: null },
   { personSlug: "joshua-harris", role: "Co-Lead / President", csiTitle: "Secondary Leader", start: "2026-09-23", end: null },
-  { personSlug: "joey-lee", role: "Treasurer", csiTitle: "Treasurer/Financial Officer", start: "2026-09-23", end: null },
+  { personSlug: "joey-lee", role: "Financial Officer", csiTitle: "Treasurer/Financial Officer", start: "2026-09-23", end: null },
 ];
 
-export const LEADERSHIP_LAST_UPDATED = "October 16, 2026";
+export const LEADERSHIP_LAST_UPDATED = "October 17, 2026";
 
 /* ----------------------------------------------------------------------- */
 /* Derived — don't edit below for content changes.                          */
