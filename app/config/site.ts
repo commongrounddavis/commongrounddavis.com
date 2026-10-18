@@ -119,5 +119,13 @@ export const WEBSITE_SUPPORT_LABEL = (() => {
 })();
 export const WEBSITE_MAINTAINER_NAME = "Vijit Dua";
 
+/** Public repo for this site — Source line on /support. */
+export const GITHUB_REPO_URL =
+  "https://github.com/commongrounddavis/commongrounddavis.com";
+export const GITHUB_REPO_LABEL = (() => {
+  const url = new URL(GITHUB_REPO_URL);
+  return `${url.host}${url.pathname}`.replace(/\/$/, "");
+})();
+
 // Never put Discord webhook URLs in this public repo. Form → Discord pings
 // live in Apps Script properties (see README).

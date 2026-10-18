@@ -3,6 +3,8 @@ import { Link } from "react-router";
 import type { Route } from "./+types/support";
 import {
   DISCORD_INVITE_URL,
+  GITHUB_REPO_LABEL,
+  GITHUB_REPO_URL,
   SITE_NAME,
   WEBSITE_MAINTAINER_NAME,
   WEBSITE_SUPPORT_DISCORD_HANDLE,
@@ -130,6 +132,13 @@ export default function Support(): React.ReactNode {
           </button>
         ) : null}
       </div>
+
+      <p className="support-meta">
+        Source:{" "}
+        <a href={GITHUB_REPO_URL} target="_blank" rel="noopener">
+          {GITHUB_REPO_LABEL}
+        </a>
+      </p>
     </section>
   );
 }
