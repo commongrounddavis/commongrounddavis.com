@@ -72,11 +72,16 @@ export const PEOPLE: Person[] = [
     name: "Joshua Harris",
     founder: true,
     email: "jtdharris@ucdavis.edu",
+    discordHandle: "thepainin",
+    discordUserId: "1458353516409126935",
     photoSrc: "/team/joshua-harris.webp",
-    bio: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`
+    instagram: "https://instagram.com/jtdharris/",
+    bio: `
+    Joshua is a pre-law student at UC Davis, a businessman, and co-founder of Common Ground Davis. A debater at heart, he’s spent years learning
+    how to change minds, and he’s never been afraid to argue the unpopular side. A former valedictorian, class speaker, and class president, 
+    he’s drawn to political and social discussion, and he believes real debate only happens when both sides are willing to listen.
+    He’d rather beat an argument than ban it.
+    `.trim()
   },
   {
     slug: "joey-lee",
@@ -85,7 +90,11 @@ export const PEOPLE: Person[] = [
     photoSrc: "/team/joey-lee.webp",
     discordHandle: "sakurazaka_senya",
     discordUserId: "374054097793449987",
-    bio: "Joey Lee is a Computer Science and Engineering student at UC Davis. He doesn’t largely get involved in politics due to his personal philosophy of “Live and let live”. He is interested in trying to resolve disagreements and minimize antagonization and radicalization in US politics, as well as improving political understanding overall.",
+    bio: `
+    Joey Lee is a Computer Science and Engineering student at UC Davis. 
+    He doesn’t largely get involved in politics due to his personal philosophy of “Live and let live”. 
+    He is interested in trying to resolve disagreements and minimize antagonization and radicalization in US politics, as well as improving political understanding overall.
+    `.trim(),
   },
 ];
 
