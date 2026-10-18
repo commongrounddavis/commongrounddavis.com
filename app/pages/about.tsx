@@ -11,8 +11,7 @@ import { pageMeta } from "../config/site";
 export function meta(_: Route.MetaArgs) {
   return pageMeta({
     title: "About",
-    description:
-      "Who Common Ground Davis is, what we believe, and how the club started.",
+    description: `${ABOUT_FULL[0]} Founded and co-led by two students who disagree politically.`,
     path: "/about",
   });
 }

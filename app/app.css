@@ -1566,6 +1566,8 @@
     font-size: 1rem;
     line-height: 1.6;
     color: var(--color-ink);
+    text-align: justify;
+    text-align-last: left;
   }
 
   .team-links {
@@ -1619,16 +1621,24 @@
   @media (max-width: 600px) {
     .team-member,
     .team-page .team-member {
-      grid-template-columns: 6.5rem minmax(0, 1fr);
-      justify-content: start;
-      gap: 1rem;
+      grid-template-columns: minmax(0, 1fr);
+      justify-items: center;
+      text-align: center;
+      gap: 0.9rem;
     }
 
-    .team-avatar,
-    .team-member > .team-avatar {
-      width: 6.5rem;
-      height: 6.5rem;
-      font-size: 0.95rem;
+    .team-member .team-body {
+      width: 100%;
+    }
+
+    .team-member .team-bio {
+      margin-inline: auto;
+      text-align: justify;
+      text-align-last: left;
+    }
+
+    .team-member .team-links {
+      justify-content: center;
     }
   }
 

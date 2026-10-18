@@ -22,7 +22,7 @@ export function meta(_: Route.MetaArgs) {
   return pageMeta({
     title: "Debate format",
     description:
-      "How a Common Ground Davis debate runs, from the motion to the closing.",
+      "How a Common Ground Davis debate runs: steelman the other side before you disagree. No winner, 1–2 hours.",
     path: "/debate-format",
   });
 }
