@@ -1078,6 +1078,22 @@
     text-underline-offset: 3px;
   }
 
+  .support-meta {
+    margin-top: auto;
+    max-width: 40rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--color-border);
+    font-size: 0.75rem;
+    line-height: 1.45;
+    color: var(--color-ink-muted);
+  }
+
+  .support-meta a {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
   .error-page {
     position: relative;
     box-sizing: border-box;
