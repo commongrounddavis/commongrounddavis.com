@@ -8,10 +8,28 @@ import {
   REGISTERING,
   REGULAR_MEETING,
 } from "../config/meetings";
-import { SITE_NAME, pageMeta } from "../config/site";
+import {
+  DISCORD_INVITE_URL,
+  SITE_DESCRIPTION,
+  SITE_NAME,
+  SITE_URL,
+  absoluteUrl,
+  pageMeta,
+} from "../config/site";
 
 export function meta(_: Route.MetaArgs) {
-  return pageMeta({ path: "/" });
+  return pageMeta({
+    path: "/",
+    jsonLd: {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      name: SITE_NAME,
+      url: SITE_URL,
+      logo: absoluteUrl("/logo.png"),
+      description: SITE_DESCRIPTION,
+      ...(DISCORD_INVITE_URL ? { sameAs: [DISCORD_INVITE_URL] } : {}),
+    },
+  });
 }
 
 function MeetingsNotice({ text }: { text: string }): React.ReactNode {

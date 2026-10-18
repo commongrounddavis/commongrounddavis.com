@@ -5,10 +5,13 @@ import { Avatar, PersonLinks } from "../components/team-member";
 import { DISCORD_INVITE_URL, pageMeta } from "../config/site";
 
 export function meta(_: Route.MetaArgs) {
+  const leads = currentOfficers()
+    .filter((o) => o.role === "Co-Lead / President")
+    .map((o) => o.person.name);
+  const who = leads.length ? leads.join(" or ") : "a co-lead";
   return pageMeta({
     title: "Contact",
-    description:
-      "Contact Common Ground Davis co-leads — membership, meetings, and general questions.",
+    description: `Email ${who} — Common Ground Davis co-leads — about membership, meetings, and general questions.`,
     path: "/contact",
   });
 }

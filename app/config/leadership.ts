@@ -78,10 +78,12 @@ export const PEOPLE: Person[] = [
     instagram: "https://instagram.com/jtdharris/",
     bio: `
     Joshua is a pre-law student at UC Davis, a businessman, and co-founder of Common Ground Davis. A debater at heart, he’s spent years learning
-    how to change minds, and he’s never been afraid to argue the unpopular side. A former valedictorian, class speaker, and class president, 
+    how to change minds, and he’s never been afraid to argue the unpopular side.
+
+    A former valedictorian, class speaker, and class president, 
     he’s drawn to political and social discussion, and he believes real debate only happens when both sides are willing to listen.
     He’d rather beat an argument than ban it.
-    `.trim()
+    `.trim(),
   },
   {
     slug: "joey-lee",
