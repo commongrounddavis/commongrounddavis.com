@@ -76,6 +76,7 @@ export const PEOPLE: Person[] = [
     discordUserId: "1458353516409126935",
     photoSrc: "/team/joshua-harris.webp",
     instagram: "https://instagram.com/jtdharris/",
+    linkedin: "https://linkedin.com/in/joshua-harris-748788425",
     bio: `
     Joshua is a pre-law student at UC Davis, a businessman, and co-founder of Common Ground Davis. A debater at heart, he’s spent years learning
     how to change minds, and he’s never been afraid to argue the unpopular side.
