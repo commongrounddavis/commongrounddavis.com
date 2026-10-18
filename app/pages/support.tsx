@@ -14,8 +14,7 @@ import {
 export function meta(_: Route.MetaArgs) {
   return pageMeta({
     title: "Support",
-    description:
-      "Website and technical support for commongrounddavis.com — maintainers and how to get help.",
+    description: `Website and technical support for commongrounddavis.com — ${WEBSITE_MAINTAINER_NAME} and how to get help.`,
     path: "/support",
   });
 }

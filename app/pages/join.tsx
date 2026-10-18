@@ -10,7 +10,7 @@ export function meta(_: Route.MetaArgs) {
   return pageMeta({
     title: "Join",
     description:
-      "Join Common Ground Davis — UC Davis interest form for the founding cohort.",
+      "Join Common Ground Davis, a UC Davis political debate club for students who disagree. Interest form for the founding cohort.",
     path: "/join",
   });
 }
