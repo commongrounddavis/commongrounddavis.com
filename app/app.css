@@ -281,7 +281,7 @@
 
     .home-about-aside-illustrations {
       width: 100%;
-      max-width: 28rem;
+      max-width: 22rem;
       justify-self: center;
       margin-inline: auto;
       margin-top: 1rem;
@@ -301,7 +301,7 @@
     }
   }
 
-  /* ImageSet — equal tiles, no overlap. Stack on desktop, two-up on mobile. */
+  /* ImageSet — equal tiles, no overlap. Stack on desktop; two-up on mobile if 2+. */
   .image-set {
     display: grid;
     grid-template-columns: 1fr;
@@ -345,7 +345,7 @@
   }
 
   @media (max-width: 700px) {
-    .image-set {
+    .image-set:has(.image-set-card:nth-child(2)) {
       grid-template-columns: 1fr 1fr;
       gap: 0.55rem;
     }
