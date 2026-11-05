@@ -44,6 +44,7 @@
   html {
     color-scheme: light;
     scroll-behavior: smooth;
+    overflow-x: clip;
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -60,6 +61,7 @@
     font-family: var(--font-sans);
     font-size: 1rem;
     line-height: 1.55;
+    overflow-x: clip;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -278,16 +280,17 @@
     }
 
     .home-about-aside-illustrations {
-      width: min(18rem, 100%);
+      width: min(20rem, 100%);
       justify-self: center;
-      margin-top: 0.5rem;
+      margin-top: 0.75rem;
+      padding: 1.35rem 1.75rem 1.6rem;
     }
   }
 
   /* Overlapping polaroid stack — right of copy on desktop, compact on mobile */
   .home-about-aside-illustrations {
     width: 22rem;
-    padding: 1.1rem 1.4rem 1.4rem;
+    padding: 1.35rem 1.85rem 1.75rem;
     overflow: visible;
   }
 
@@ -329,35 +332,35 @@
 
   .perspective-card-0 {
     z-index: 2;
-    transform: translate(-18px, -12px) rotate(-5deg);
+    transform: translate(-10%, -12%) rotate(-8deg);
   }
 
   .perspective-card-1 {
     z-index: 1;
-    transform: translate(22px, 16px) rotate(7deg);
+    transform: translate(24%, 18%) rotate(11deg);
   }
 
   .perspective-stack:hover .perspective-card-0,
   .perspective-stack:focus-within .perspective-card-0 {
-    transform: translate(-16%, -6%) rotate(-7deg) scale(1.03);
+    transform: translate(-22%, -14%) rotate(-11deg) scale(1.03);
   }
 
   .perspective-stack:hover .perspective-card-1,
   .perspective-stack:focus-within .perspective-card-1 {
-    transform: translate(18%, 10%) rotate(8deg) scale(1.03);
+    transform: translate(32%, 20%) rotate(13deg) scale(1.03);
   }
 
   .perspective-card-0:hover,
   .perspective-card-0:focus-visible {
     z-index: 5;
-    transform: translate(-16%, -6%) rotate(-3deg) scale(1.1) !important;
+    transform: translate(-22%, -14%) rotate(-6deg) scale(1.1) !important;
     box-shadow: 0 12px 36px color-mix(in srgb, var(--color-ink) 22%, transparent);
   }
 
   .perspective-card-1:hover,
   .perspective-card-1:focus-visible {
     z-index: 5;
-    transform: translate(18%, 10%) rotate(3deg) scale(1.1) !important;
+    transform: translate(32%, 20%) rotate(7deg) scale(1.1) !important;
     box-shadow: 0 12px 36px color-mix(in srgb, var(--color-ink) 22%, transparent);
   }
 
@@ -375,27 +378,35 @@
 
   @media (max-width: 700px) {
     .perspective-stack {
-      max-height: 9.5rem;
+      max-height: 11.5rem;
+    }
+
+    .perspective-card-0 {
+      transform: translate(-12%, -10%) rotate(-8deg);
+    }
+
+    .perspective-card-1 {
+      transform: translate(22%, 16%) rotate(11deg);
     }
 
     .perspective-stack:hover .perspective-card-0,
     .perspective-stack:focus-within .perspective-card-0 {
-      transform: translate(-18%, -6%) rotate(-6deg) scale(1.03);
+      transform: translate(-20%, -12%) rotate(-10deg) scale(1.03);
     }
 
     .perspective-stack:hover .perspective-card-1,
     .perspective-stack:focus-within .perspective-card-1 {
-      transform: translate(18%, 8%) rotate(6deg) scale(1.03);
+      transform: translate(28%, 18%) rotate(12deg) scale(1.03);
     }
 
     .perspective-card-0:hover,
     .perspective-card-0:focus-visible {
-      transform: translate(-18%, -6%) rotate(-2deg) scale(1.08) !important;
+      transform: translate(-20%, -12%) rotate(-5deg) scale(1.08) !important;
     }
 
     .perspective-card-1:hover,
     .perspective-card-1:focus-visible {
-      transform: translate(18%, 8%) rotate(2deg) scale(1.08) !important;
+      transform: translate(28%, 18%) rotate(6deg) scale(1.08) !important;
     }
   }
 
