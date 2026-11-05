@@ -280,19 +280,18 @@
     }
 
     .home-about-aside-illustrations {
-      width: min(20rem, 100%);
+      width: 100%;
+      max-width: 28rem;
       justify-self: center;
       margin-inline: auto;
-      margin-top: 0.75rem;
-      padding: 0.5rem;
+      margin-top: 1rem;
+      padding: 0;
     }
   }
 
-  /* Right-column slot for ImageFan on about / home */
+  /* Right-column slot for ImageSet on about / home */
   .home-about-aside-illustrations {
-    width: 22rem;
-    padding: 0.5rem;
-    overflow: hidden;
+    width: 16.5rem;
   }
 
   @media (min-width: 701px) {
@@ -302,76 +301,53 @@
     }
   }
 
-  /*
-    ImageFan — overlapping photos that stay inside this box.
-    Positions are % of the container. Hover only raises z-index.
-  */
-  .image-fan {
-    --fan-mid: calc((var(--fan-count) - 1) / 2);
-    --fan-div: max(var(--fan-mid), 0.5);
-    --fan-spread: 11%;
-    --fan-lift: 4%;
-    --fan-tilt: 5deg;
-    --fan-card: 70%;
-    position: relative;
-    z-index: 1;
+  /* ImageSet — equal tiles, no overlap. Stack on desktop, two-up on mobile. */
+  .image-set {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.7rem;
     width: 100%;
-    aspect-ratio: 4 / 3;
-    overflow: hidden;
   }
 
-  .image-fan-card {
-    --fan-t: calc((var(--fan-i) - var(--fan-mid)) / var(--fan-div));
-    position: absolute;
-    top: calc(50% + var(--fan-t) * var(--fan-lift));
-    left: calc(50% + var(--fan-t) * var(--fan-spread));
-    z-index: calc(var(--fan-count) - var(--fan-i));
-    width: var(--fan-card);
-    aspect-ratio: 4 / 3;
+  .image-set-card {
+    display: block;
+    width: 100%;
     padding: 0;
     margin: 0;
-    border: 1px solid color-mix(in srgb, var(--color-ink) 12%, transparent);
-    border-radius: 0.75rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-nav);
     overflow: hidden;
     background: var(--color-surface-raised);
     cursor: pointer;
-    box-shadow: 0 4px 16px color-mix(in srgb, var(--color-ink) 14%, transparent);
-    transform: translate(-50%, -50%) rotate(calc(var(--fan-t) * var(--fan-tilt)));
-    transition: box-shadow 0.2s ease;
+    transition:
+      border-color 0.15s ease,
+      box-shadow 0.15s ease;
   }
 
-  .image-fan-card img {
+  .image-set-card img {
     display: block;
     width: 100%;
-    height: 100%;
-    object-fit: cover;
-    background: #f8f8f8;
-    pointer-events: none;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    object-fit: contain;
+    background: #fff;
   }
 
-  .image-fan-card:hover,
-  .image-fan-card:focus-visible {
-    z-index: 8;
-    box-shadow: 0 10px 28px color-mix(in srgb, var(--color-ink) 22%, transparent);
+  .image-set-card:hover,
+  .image-set-card:focus-visible {
+    border-color: color-mix(in srgb, var(--color-side-blue) 40%, var(--color-border));
+    box-shadow: 0 4px 14px color-mix(in srgb, var(--color-ink) 10%, transparent);
   }
 
-  .image-fan-card:focus-visible {
+  .image-set-card:focus-visible {
     outline: 2px solid var(--color-side-red);
-    outline-offset: 3px;
+    outline-offset: 2px;
   }
 
   @media (max-width: 700px) {
-    .image-fan {
-      --fan-spread: 8%;
-      --fan-lift: 0%;
-      --fan-tilt: 4deg;
-      --fan-card: 60%;
-    }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .image-fan-card {
-      transition: none;
+    .image-set {
+      grid-template-columns: 1fr 1fr;
+      gap: 0.55rem;
     }
   }
 
