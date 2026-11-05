@@ -1,9 +1,11 @@
 import { Link } from "react-router";
 import type { Route } from "./+types/about";
+import { PerspectiveIllustrations } from "../components/perspective-illustrations";
 import {
   ABOUT_CONDENSED,
   ABOUT_FOUNDING,
   ABOUT_FULL,
+  ABOUT_PROBLEM,
   FOUNDING_ESSAY_URL,
 } from "../config/about";
 import { pageMeta } from "../config/site";
@@ -17,7 +19,6 @@ export function meta(_: Route.MetaArgs) {
 }
 
 const SECTIONS = [
-  { title: "The Problem", body: ABOUT_FULL[1] },
   { title: "What we believe", body: ABOUT_FULL[2] },
   { title: "The Steelman argument", body: ABOUT_FULL[3] },
   { title: "Our goal", body: ABOUT_FULL[4] },
@@ -108,6 +109,16 @@ export default function About(): React.ReactNode {
         <div className="prose-stack">
           <FoundingParagraph />
         </div>
+      </section>
+
+      <section className="home-section">
+        <h1>The Problem</h1>
+        <div className="prose-stack">
+          {ABOUT_PROBLEM.map((paragraph) => (
+            <p key={paragraph.slice(0, 40)}>{paragraph}</p>
+          ))}
+        </div>
+        <PerspectiveIllustrations variant="full" />
       </section>
 
       {SECTIONS.map(({ title, body }) => (
