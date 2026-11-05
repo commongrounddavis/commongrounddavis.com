@@ -59,7 +59,21 @@ Common Ground Davis is a political debate club at UC Davis for students who disa
 
 Political polarization is a growing problem in the United States and at UC Davis. At the extremes of the right wing, empathy and opposing views are dismissed as "woke," "Marxist," "communist," or "mentally ill." On the far left, disagreement is immediately labeled "fascist," "violent speech," "Nazism," or "anti-human rights." Both sides dismiss honest questions from the other with labels that justify ignoring opposing views and keep people from hearing each other out.
 
-Misinformation makes this worse, nationally and online. Most of us never hear what the people we disagree with actually believe. We hear a strawman: a claim they do not hold, or a real point pulled out of context — from friends, from clips, or from a feed that only shows the worst of the other side. Arguing with that version feels obvious. One side walks away sure the other is simply racist. The other walks away sure their opponents are simply entitled. Neither of those is the argument a reasonable person on that side is making, and both sides do this to each other without noticing.
+Not to mention the growing misinformation crisis. Whether you're a Democrat or a Republican, ask yourself this: the reasons you dislike the other side, did you hear them directly from the other side, or are they what you think the other side believes? Most of what we know about the other side comes from our friends or our social media feeds. And even when we do hear it from them, it's usually one clip, one tweet, or the loudest person, not the full argument. So we end up hating the other side over beliefs most of them don't even hold.
+
+Take guns. The left hears, "They care more about their guns than people's lives." The right hears, "They want to take away your right to defend yourself." But most gun owners worry that criminals will always get guns illegally, so stricter laws would only take guns from the people trying to protect themselves. Many of them still support stronger background checks. And most people pushing for gun laws just want fewer kids to die at school. Both sides want the same thing: guns out of the wrong hands.
+
+Neither side is evil. We're both arguing against strawmen: beliefs that are either false or taken out of context. The fix is hearing the other side's full argument, and that's what we're here for.
+
+More examples
+
+Policing
+
+The right hears, "They want to get rid of the police." The left hears, "They don't care when cops get it wrong." But both sides want cops to do better. Most people who back the police know cops mess up sometimes. Their point is: would you rather have cops who get it wrong 1% of the time, or no cops at all and a lawless society? A few bad apples don't mean you throw out every apple, so fix them with better training instead. And most people pushing for reform don't want zero police either. They just want fewer innocent people hurt or jailed.
+
+Healthcare
+
+The right hears, "They just want free stuff paid for with your taxes." The left hears, "They don't care if poor people die." But most people pushing for universal healthcare just don't want anyone going broke because they got sick. And most people against it worry about higher taxes and the government running it badly. Both sides want people to get care they can afford.
 
 We, at Common Ground Davis, want to change that status quo. We start from one belief: everyone has reasons behind their beliefs, and no one is inherently evil. People don't knowingly do something they believe is wrong without a reason. Either they believe it's the right thing to do, or they accept that it's wrong in isolation but justified in the broader context (e.g., breaking a rule to prevent a bigger harm). Everyone's reasons come from their own lived experiences, so the people we disagree with usually have genuine reasons for their beliefs, even if those reasons look flawed to us.
 

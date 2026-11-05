@@ -9,6 +9,7 @@ import {
   FOUNDING_ESSAY_URL,
   ILLUSTRATION_MEDIA,
   ILLUSTRATION_SIX_NINE,
+  PROBLEM_EXAMPLES,
 } from "../config/about";
 import { pageMeta } from "../config/site";
 
@@ -86,6 +87,22 @@ function FoundingParagraph(): React.ReactNode {
   );
 }
 
+/** Underline "directly" and italicize "think" in the misinformation paragraph. */
+function ProblemParagraph({ text }: { text: string }): React.ReactNode {
+  const mark = "hear them directly from the other side, or are they what you think ";
+  const at = text.indexOf(mark);
+  if (at === -1) return <p>{text}</p>;
+  const before = text.slice(0, at);
+  const after = text.slice(at + mark.length);
+  return (
+    <p>
+      {before}
+      hear them <u>directly</u> from the other side, or are they what you <i>think</i>{" "}
+      {after}
+    </p>
+  );
+}
+
 export default function About(): React.ReactNode {
   return (
     <>
@@ -116,9 +133,22 @@ export default function About(): React.ReactNode {
         <h1>The Problem</h1>
         <div className="home-about-row home-about-row-align-start">
           <div className="prose-stack" style={{ marginTop: 0 }}>
-            {ABOUT_PROBLEM.map((paragraph) => (
-              <p key={paragraph.slice(0, 40)}>{paragraph}</p>
+            <p>{ABOUT_PROBLEM[0]}</p>
+            {ABOUT_PROBLEM.slice(1).map((paragraph) => (
+              <ProblemParagraph key={paragraph.slice(0, 24)} text={paragraph} />
             ))}
+            <div className="problem-examples">
+              <div className="problem-examples-label">More examples</div>
+              {PROBLEM_EXAMPLES.map((example) => (
+                <details key={example.topic} className="problem-example">
+                  <summary>
+                    <span>{example.topic}</span>
+                    <span className="problem-chevron" aria-hidden="true" />
+                  </summary>
+                  <p>{example.body}</p>
+                </details>
+              ))}
+            </div>
           </div>
           <aside className="home-about-aside home-about-aside-illustrations">
             <PerspectiveIllustrations images={[ILLUSTRATION_MEDIA]} />
