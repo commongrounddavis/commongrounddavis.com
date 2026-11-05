@@ -19,28 +19,25 @@ export type MisinformationIllustration = {
   height: number;
 };
 
-/** Six-or-nine: Igor Vorobyov (1972). */
+/** Six-or-nine: Igor Vorobyov (1972). Goes with “What we believe.” */
 export const ILLUSTRATION_SIX_NINE: MisinformationIllustration = {
   src: "/images/perspective-six-nine.png",
   width: 543,
   height: 325,
 };
 
-/** Media framing cartoon. */
+/** Media framing cartoon. Goes with “The Problem.” */
 export const ILLUSTRATION_MEDIA: MisinformationIllustration = {
   src: "/images/media-framing.jpg",
   width: 798,
   height: 556,
 };
 
-/** Front card is six-or-nine; back card is media framing. */
+/** Home About still shows both. */
 export const ABOUT_ILLUSTRATIONS: readonly MisinformationIllustration[] = [
-  ILLUSTRATION_SIX_NINE,
   ILLUSTRATION_MEDIA,
+  ILLUSTRATION_SIX_NINE,
 ];
-
-/** @deprecated use ABOUT_ILLUSTRATIONS */
-export const MISINFORMATION_ILLUSTRATIONS = ABOUT_ILLUSTRATIONS;
 
 export const ABOUT_FULL = [
   "Common Ground Davis is a political debate club at UC Davis for students who disagree and want to understand each other.",

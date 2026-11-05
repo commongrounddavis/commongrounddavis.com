@@ -1,11 +1,16 @@
-import { ImageFan } from "./image-fan";
-import { ABOUT_ILLUSTRATIONS } from "../config/about";
+import { ImageSet } from "./image-set";
+import {
+  ABOUT_ILLUSTRATIONS,
+  type MisinformationIllustration,
+} from "../config/about";
 
-/** About / home problem illustrations: six-or-nine and media framing. */
+/** Tappable illustration tile(s). Home passes both; about sections pass one. */
 export function PerspectiveIllustrations({
+  images = ABOUT_ILLUSTRATIONS,
   className,
 }: {
+  images?: readonly MisinformationIllustration[];
   className?: string;
 }): React.ReactNode {
-  return <ImageFan images={ABOUT_ILLUSTRATIONS} className={className} />;
+  return <ImageSet images={images} className={className} />;
 }
