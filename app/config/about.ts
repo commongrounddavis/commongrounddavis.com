@@ -10,7 +10,7 @@ export const ABOUT_CONDENSED = [
 
 export const ABOUT_PROBLEM = [
   'Political polarization is a growing problem in the United States and at UC Davis. At the extremes of the right wing, empathy and opposing views are dismissed as "woke," "Marxist," "communist," or "mentally ill." On the far left, disagreement is immediately labeled "fascist," "violent speech," "Nazism," or "anti-human rights." Both sides dismiss honest questions from the other with labels that justify ignoring opposing views and keep people from hearing each other out.',
-  "Online, the same dynamics are amplified. Feed algorithms reward outrage and keep people in bubbles, so many of us rarely see how the other side actually thinks. It becomes easy to believe assumptions or clipped posts instead of real arguments—and to attack strawman versions of beliefs that reasonable opponents do not hold. The same thing happens in the other direction. Both sides do it to each other, and misinformation fills the gap where empathy and curiosity should be.",
+  'Misinformation makes this worse, nationally and online. Most of us never hear what the people we disagree with actually believe. We hear a strawman: a claim they do not hold, or a real point pulled out of context — from friends, from clips, or from a feed that only shows the worst of the other side. Arguing with that version feels obvious. One side walks away sure the other is simply racist. The other walks away sure their opponents are simply entitled. Neither of those is the argument a reasonable person on that side is making, and both sides do this to each other without noticing.',
 ] as const;
 
 export type MisinformationIllustration = {
