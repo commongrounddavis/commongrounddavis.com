@@ -4,8 +4,6 @@ import {
   type MisinformationIllustration,
 } from "../config/about";
 
-type Variant = "compact" | "full";
-
 function IllustrationTile({
   item,
   onOpen,
@@ -36,10 +34,8 @@ function IllustrationTile({
 }
 
 export function PerspectiveIllustrations({
-  variant = "full",
   className,
 }: {
-  variant?: Variant;
   className?: string;
 }): React.ReactNode {
   const dialogRef = useRef<HTMLDialogElement>(null);
@@ -57,13 +53,7 @@ export function PerspectiveIllustrations({
     setActive(null);
   }
 
-  const rootClass = [
-    "perspective-pair",
-    variant === "compact" ? "perspective-pair-compact" : "perspective-pair-full",
-    className,
-  ]
-    .filter(Boolean)
-    .join(" ");
+  const rootClass = ["perspective-pair", className].filter(Boolean).join(" ");
 
   return (
     <>

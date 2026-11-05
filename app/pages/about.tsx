@@ -113,12 +113,16 @@ export default function About(): React.ReactNode {
 
       <section className="home-section">
         <h1>The Problem</h1>
-        <div className="prose-stack">
-          {ABOUT_PROBLEM.map((paragraph) => (
-            <p key={paragraph.slice(0, 40)}>{paragraph}</p>
-          ))}
+        <div className="home-about-row home-about-row-align-start">
+          <div className="prose-stack" style={{ marginTop: 0 }}>
+            {ABOUT_PROBLEM.map((paragraph) => (
+              <p key={paragraph.slice(0, 40)}>{paragraph}</p>
+            ))}
+          </div>
+          <aside className="home-about-aside home-about-aside-illustrations">
+            <PerspectiveIllustrations />
+          </aside>
         </div>
-        <PerspectiveIllustrations variant="full" />
       </section>
 
       {SECTIONS.map(({ title, body }) => (

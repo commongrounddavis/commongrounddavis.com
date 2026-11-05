@@ -206,6 +206,14 @@
     gap: 1.25rem 3rem;
   }
 
+  .home-about-row-align-start {
+    align-items: start;
+  }
+
+  .home-about-aside {
+    justify-self: end;
+  }
+
   /* Short-form lead copy: UI font. Serif is reserved for .prose-stack / bios. */
   .home-lead {
     margin: 0;
@@ -267,23 +275,55 @@
       order: -1;
       justify-self: center;
     }
+
+    .home-about-aside-illustrations {
+      width: 100%;
+      justify-self: stretch;
+    }
   }
 
-  /* Perspective / misinformation illustration pair (home + about) */
+  /* Illustration pair — lives in .home-about-aside on desktop, full-width row on mobile */
+  .home-about-aside-illustrations {
+    width: 14.5rem;
+  }
+
   .perspective-pair {
-    margin-top: 1.25rem;
-    max-width: 44rem;
-  }
-
-  .perspective-pair-full {
-    max-width: 52rem;
-    margin-top: 1.75rem;
+    margin: 0;
+    width: 100%;
   }
 
   .perspective-pair-grid {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 0.65rem 0.75rem;
+    gap: 0.75rem;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @media (min-width: 701px) {
+    .home-about-aside-illustrations {
+      position: sticky;
+      top: 1.25rem;
+    }
+
+    .home-about-aside-illustrations .perspective-pair-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .home-about-aside-illustrations .perspective-tile-img {
+      aspect-ratio: auto;
+      max-height: none;
+      min-height: 0;
+    }
+  }
+
+  @media (max-width: 700px) {
+    .home-about-aside-illustrations .perspective-pair-grid {
+      gap: 0.65rem;
+    }
+
+    .home-about-aside-illustrations .perspective-tile-img {
+      aspect-ratio: 5 / 3;
+      max-height: 4.5rem;
+    }
   }
 
   .perspective-tile {
@@ -322,15 +362,6 @@
     aspect-ratio: 4 / 3;
     object-fit: contain;
     background: #f8f8f8;
-  }
-
-  .perspective-pair-compact .perspective-tile-img {
-    aspect-ratio: 5 / 3;
-    max-height: 5.5rem;
-  }
-
-  .perspective-pair-full .perspective-tile-img {
-    max-height: 9.5rem;
   }
 
   .perspective-lightbox {
@@ -376,12 +407,6 @@
     font-size: 1.35rem;
     line-height: 1;
     cursor: pointer;
-  }
-
-  @media (min-width: 701px) {
-    .perspective-pair-compact .perspective-tile-img {
-      max-height: 6.75rem;
-    }
   }
 
   .button-brand {
