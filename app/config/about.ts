@@ -17,8 +17,6 @@ export type MisinformationIllustration = {
   src: string;
   width: number;
   height: number;
-  title: string;
-  summary: string;
 };
 
 /** Clean scans (not phone screenshots). Six-or-nine: Igor Vorobyov (1972), widely circulated. Media framing: editorial cartoon on selective camera framing. */
@@ -28,17 +26,11 @@ export const MISINFORMATION_ILLUSTRATIONS: readonly MisinformationIllustration[]
       src: "/images/perspective-six-nine.png",
       width: 543,
       height: 325,
-      title: "Six or nine?",
-      summary:
-        "Same symbol, opposite conclusions—each person is sure from where they stand.",
     },
     {
       src: "/images/media-framing.jpg",
       width: 798,
       height: 556,
-      title: "What the camera shows",
-      summary:
-        "Crop the frame and the story flips—context is easy to lose online too.",
     },
   ] as const;
 
