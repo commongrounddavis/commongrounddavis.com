@@ -1,34 +1,43 @@
 import { useState } from "react";
 import { Lightbox, type LightboxImage } from "./lightbox";
 
-export type SetImage = LightboxImage;
+export type FanImage = LightboxImage;
+
+type FanStyle = React.CSSProperties & {
+  "--fan-count": number;
+  "--fan-i": number;
+};
 
 /**
- * Equal tiles of tappable images. Desktop stacks them; mobile sits two-up.
- * Click opens a full-screen lightbox.
+ * Overlapping photo fan. Cards stay inside the frame; both are visible at
+ * rest. Hover brings a card to the front. Click opens a full-screen lightbox.
  *
- *   <ImageSet images={[{ src, width, height }]} />
+ *   <ImageFan images={[{ src, width, height }]} />
  */
-export function ImageSet({
+export function ImageFan({
   images,
   className,
 }: {
-  images: readonly SetImage[];
+  images: readonly FanImage[];
   className?: string;
 }): React.ReactNode {
-  const [active, setActive] = useState<SetImage | null>(null);
+  const [active, setActive] = useState<FanImage | null>(null);
   if (images.length === 0) return null;
 
-  const rootClass = ["image-set", className].filter(Boolean).join(" ");
+  const rootClass = ["image-fan", className].filter(Boolean).join(" ");
 
   return (
     <>
-      <div className={rootClass}>
-        {images.map((image) => (
+      <div
+        className={rootClass}
+        style={{ "--fan-count": images.length } as FanStyle}
+      >
+        {images.map((image, index) => (
           <button
             key={image.src}
             type="button"
-            className="image-set-card"
+            className="image-fan-card"
+            style={{ "--fan-i": index } as FanStyle}
             onClick={() => setActive(image)}
             aria-label={image.alt ?? "View full screen"}
           >

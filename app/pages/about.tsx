@@ -7,8 +7,6 @@ import {
   ABOUT_FULL,
   ABOUT_PROBLEM,
   FOUNDING_ESSAY_URL,
-  ILLUSTRATION_MEDIA,
-  ILLUSTRATION_SIX_NINE,
 } from "../config/about";
 import { pageMeta } from "../config/site";
 
@@ -21,6 +19,7 @@ export function meta(_: Route.MetaArgs) {
 }
 
 const SECTIONS = [
+  { title: "What we believe", body: ABOUT_FULL[2] },
   { title: "The Steelman argument", body: ABOUT_FULL[3] },
   { title: "Our goal", body: ABOUT_FULL[4] },
 ] as const;
@@ -121,19 +120,7 @@ export default function About(): React.ReactNode {
             ))}
           </div>
           <aside className="home-about-aside home-about-aside-illustrations">
-            <PerspectiveIllustrations images={[ILLUSTRATION_MEDIA]} />
-          </aside>
-        </div>
-      </section>
-
-      <section className="home-section">
-        <h1>What we believe</h1>
-        <div className="home-about-row home-about-row-align-start">
-          <div className="prose-stack" style={{ marginTop: 0 }}>
-            <p>{ABOUT_FULL[2]}</p>
-          </div>
-          <aside className="home-about-aside home-about-aside-illustrations">
-            <PerspectiveIllustrations images={[ILLUSTRATION_SIX_NINE]} />
+            <PerspectiveIllustrations />
           </aside>
         </div>
       </section>
