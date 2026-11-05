@@ -204,6 +204,7 @@
     grid-template-columns: minmax(0, 1fr) auto;
     align-items: center;
     gap: 1.25rem 3rem;
+    overflow: visible;
   }
 
   .home-about-row-align-start {
@@ -277,91 +278,136 @@
     }
 
     .home-about-aside-illustrations {
-      width: 100%;
-      justify-self: stretch;
+      width: min(18rem, 100%);
+      justify-self: center;
+      margin-top: 0.5rem;
     }
   }
 
-  /* Illustration pair — lives in .home-about-aside on desktop, full-width row on mobile */
+  /* Overlapping polaroid stack — right of copy on desktop, compact on mobile */
   .home-about-aside-illustrations {
-    width: 14.5rem;
+    width: 22rem;
+    padding: 1.1rem 1.4rem 1.4rem;
+    overflow: visible;
   }
 
-  .perspective-pair {
-    margin: 0;
+  .perspective-stack {
+    position: relative;
+    z-index: 1;
+    aspect-ratio: 4 / 3;
     width: 100%;
   }
 
-  .perspective-pair-grid {
-    display: grid;
-    gap: 0.75rem;
-    grid-template-columns: 1fr 1fr;
+  .perspective-stack:hover,
+  .perspective-stack:focus-within {
+    z-index: 4;
+  }
+
+  .perspective-card {
+    position: absolute;
+    inset: 0;
+    padding: 0;
+    margin: 0;
+    border: 1px solid color-mix(in srgb, var(--color-ink) 12%, transparent);
+    border-radius: 0.85rem;
+    overflow: hidden;
+    background: var(--color-surface-raised);
+    cursor: pointer;
+    box-shadow: 0 4px 16px color-mix(in srgb, var(--color-ink) 12%, transparent);
+    transition:
+      transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+      box-shadow 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+
+  .perspective-card img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    background: #f8f8f8;
+  }
+
+  .perspective-card-0 {
+    z-index: 2;
+    transform: translate(-18px, -12px) rotate(-5deg);
+  }
+
+  .perspective-card-1 {
+    z-index: 1;
+    transform: translate(22px, 16px) rotate(7deg);
+  }
+
+  .perspective-stack:hover .perspective-card-0,
+  .perspective-stack:focus-within .perspective-card-0 {
+    transform: translate(-16%, -6%) rotate(-7deg) scale(1.03);
+  }
+
+  .perspective-stack:hover .perspective-card-1,
+  .perspective-stack:focus-within .perspective-card-1 {
+    transform: translate(18%, 10%) rotate(8deg) scale(1.03);
+  }
+
+  .perspective-card-0:hover,
+  .perspective-card-0:focus-visible {
+    z-index: 5;
+    transform: translate(-16%, -6%) rotate(-3deg) scale(1.1) !important;
+    box-shadow: 0 12px 36px color-mix(in srgb, var(--color-ink) 22%, transparent);
+  }
+
+  .perspective-card-1:hover,
+  .perspective-card-1:focus-visible {
+    z-index: 5;
+    transform: translate(18%, 10%) rotate(3deg) scale(1.1) !important;
+    box-shadow: 0 12px 36px color-mix(in srgb, var(--color-ink) 22%, transparent);
+  }
+
+  .perspective-card:focus-visible {
+    outline: 2px solid var(--color-side-red);
+    outline-offset: 3px;
   }
 
   @media (min-width: 701px) {
     .home-about-aside-illustrations {
       position: sticky;
-      top: 1.25rem;
-    }
-
-    .home-about-aside-illustrations .perspective-pair-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .home-about-aside-illustrations .perspective-tile-img {
-      aspect-ratio: auto;
-      max-height: none;
-      min-height: 0;
+      top: 1.5rem;
     }
   }
 
   @media (max-width: 700px) {
-    .home-about-aside-illustrations .perspective-pair-grid {
-      gap: 0.65rem;
+    .perspective-stack {
+      max-height: 9.5rem;
     }
 
-    .home-about-aside-illustrations .perspective-tile-img {
-      aspect-ratio: 5 / 3;
-      max-height: 4.5rem;
+    .perspective-stack:hover .perspective-card-0,
+    .perspective-stack:focus-within .perspective-card-0 {
+      transform: translate(-18%, -6%) rotate(-6deg) scale(1.03);
+    }
+
+    .perspective-stack:hover .perspective-card-1,
+    .perspective-stack:focus-within .perspective-card-1 {
+      transform: translate(18%, 8%) rotate(6deg) scale(1.03);
+    }
+
+    .perspective-card-0:hover,
+    .perspective-card-0:focus-visible {
+      transform: translate(-18%, -6%) rotate(-2deg) scale(1.08) !important;
+    }
+
+    .perspective-card-1:hover,
+    .perspective-card-1:focus-visible {
+      transform: translate(18%, 8%) rotate(2deg) scale(1.08) !important;
     }
   }
 
-  .perspective-tile {
-    margin: 0;
-    min-width: 0;
-  }
-
-  .perspective-tile-button {
-    display: block;
-    width: 100%;
-    padding: 0;
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-nav);
-    background: var(--color-surface);
-    cursor: pointer;
-    overflow: hidden;
-    transition:
-      border-color 0.15s ease,
-      box-shadow 0.15s ease;
-  }
-
-  .perspective-tile-button:hover {
-    border-color: color-mix(in srgb, var(--color-side-red) 35%, var(--color-border));
-    box-shadow: 0 2px 12px color-mix(in srgb, var(--color-ink) 8%, transparent);
-  }
-
-  .perspective-tile-button:focus-visible {
-    outline: 2px solid var(--color-side-red);
-    outline-offset: 2px;
-  }
-
-  .perspective-tile-img {
-    display: block;
-    width: 100%;
-    height: auto;
-    aspect-ratio: 4 / 3;
-    object-fit: contain;
-    background: #f8f8f8;
+  @media (prefers-reduced-motion: reduce) {
+    .perspective-card,
+    .perspective-stack:hover .perspective-card-0,
+    .perspective-stack:hover .perspective-card-1,
+    .perspective-card-0:hover,
+    .perspective-card-1:hover {
+      transition: none;
+      transform: none !important;
+    }
   }
 
   .perspective-lightbox {
