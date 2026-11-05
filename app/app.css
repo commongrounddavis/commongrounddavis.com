@@ -280,93 +280,18 @@
     }
 
     .home-about-aside-illustrations {
-      width: min(20rem, 100%);
+      width: min(22rem, 100%);
       justify-self: center;
-      margin-top: 0.75rem;
-      padding: 1.35rem 1.75rem 1.6rem;
+      margin-top: 0.5rem;
+      padding: 1.5rem 0.5rem 1.75rem;
     }
   }
 
-  /* Overlapping polaroid stack — right of copy on desktop, compact on mobile */
+  /* Right-column slot for ImageFan on about / home */
   .home-about-aside-illustrations {
-    width: 22rem;
-    padding: 1.35rem 1.85rem 1.75rem;
+    width: 26rem;
+    padding: 1.75rem 1.25rem 2rem;
     overflow: visible;
-  }
-
-  .perspective-stack {
-    position: relative;
-    z-index: 1;
-    aspect-ratio: 4 / 3;
-    width: 100%;
-  }
-
-  .perspective-stack:hover,
-  .perspective-stack:focus-within {
-    z-index: 4;
-  }
-
-  .perspective-card {
-    position: absolute;
-    inset: 0;
-    padding: 0;
-    margin: 0;
-    border: 1px solid color-mix(in srgb, var(--color-ink) 12%, transparent);
-    border-radius: 0.85rem;
-    overflow: hidden;
-    background: var(--color-surface-raised);
-    cursor: pointer;
-    box-shadow: 0 4px 16px color-mix(in srgb, var(--color-ink) 12%, transparent);
-    transition:
-      transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275),
-      box-shadow 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  }
-
-  .perspective-card img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    background: #f8f8f8;
-  }
-
-  .perspective-card-0 {
-    z-index: 2;
-    transform: translate(-10%, -12%) rotate(-8deg);
-  }
-
-  .perspective-card-1 {
-    z-index: 1;
-    transform: translate(24%, 18%) rotate(11deg);
-  }
-
-  .perspective-stack:hover .perspective-card-0,
-  .perspective-stack:focus-within .perspective-card-0 {
-    transform: translate(-22%, -14%) rotate(-11deg) scale(1.03);
-  }
-
-  .perspective-stack:hover .perspective-card-1,
-  .perspective-stack:focus-within .perspective-card-1 {
-    transform: translate(32%, 20%) rotate(13deg) scale(1.03);
-  }
-
-  .perspective-card-0:hover,
-  .perspective-card-0:focus-visible {
-    z-index: 5;
-    transform: translate(-22%, -14%) rotate(-6deg) scale(1.1) !important;
-    box-shadow: 0 12px 36px color-mix(in srgb, var(--color-ink) 22%, transparent);
-  }
-
-  .perspective-card-1:hover,
-  .perspective-card-1:focus-visible {
-    z-index: 5;
-    transform: translate(32%, 20%) rotate(7deg) scale(1.1) !important;
-    box-shadow: 0 12px 36px color-mix(in srgb, var(--color-ink) 22%, transparent);
-  }
-
-  .perspective-card:focus-visible {
-    outline: 2px solid var(--color-side-red);
-    outline-offset: 3px;
   }
 
   @media (min-width: 701px) {
@@ -376,94 +301,156 @@
     }
   }
 
+  /*
+    ImageFan — reusable overlapping photo fan.
+    --fan-count / --fan-i set in the component. Rest spread is wide enough
+    that both cards are readable without hover.
+  */
+  .image-fan {
+    --fan-mid: calc((var(--fan-count) - 1) / 2);
+    --fan-div: max(var(--fan-mid), 0.5);
+    --fan-spread: 42%;
+    --fan-lift: 14%;
+    --fan-tilt: 16deg;
+    --fan-card: 64%;
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    aspect-ratio: 5 / 4;
+  }
+
+  .image-fan:hover,
+  .image-fan:focus-within {
+    z-index: 4;
+    --fan-spread: 56%;
+    --fan-lift: 18%;
+    --fan-tilt: 20deg;
+  }
+
+  .image-fan-card {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: calc(var(--fan-count) - var(--fan-i));
+    width: var(--fan-card);
+    aspect-ratio: 4 / 3;
+    padding: 0;
+    margin: 0;
+    border: 1px solid color-mix(in srgb, var(--color-ink) 12%, transparent);
+    border-radius: 0.85rem;
+    overflow: hidden;
+    background: var(--color-surface-raised);
+    cursor: pointer;
+    box-shadow: 0 6px 22px color-mix(in srgb, var(--color-ink) 16%, transparent);
+    transform-origin: center center;
+    transform: translate(-50%, -50%)
+      translate(
+        calc((var(--fan-i) - var(--fan-mid)) / var(--fan-div) * var(--fan-spread)),
+        calc((var(--fan-i) - var(--fan-mid)) / var(--fan-div) * var(--fan-lift))
+      )
+      rotate(
+        calc((var(--fan-i) - var(--fan-mid)) / var(--fan-div) * var(--fan-tilt))
+      );
+    transition:
+      transform 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+      box-shadow 0.45s ease,
+      z-index 0s;
+  }
+
+  .image-fan-card img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    background: #f8f8f8;
+    pointer-events: none;
+  }
+
+  .image-fan-card:hover,
+  .image-fan-card:focus-visible {
+    z-index: 8;
+    box-shadow: 0 14px 36px color-mix(in srgb, var(--color-ink) 24%, transparent);
+  }
+
+  .image-fan-card:focus-visible {
+    outline: 2px solid var(--color-side-red);
+    outline-offset: 3px;
+  }
+
   @media (max-width: 700px) {
-    .perspective-stack {
-      max-height: 11.5rem;
+    .image-fan {
+      --fan-spread: 30%;
+      --fan-lift: 12%;
+      --fan-tilt: 13deg;
+      --fan-card: 56%;
+      aspect-ratio: 16 / 11;
     }
 
-    .perspective-card-0 {
-      transform: translate(-12%, -10%) rotate(-8deg);
-    }
-
-    .perspective-card-1 {
-      transform: translate(22%, 16%) rotate(11deg);
-    }
-
-    .perspective-stack:hover .perspective-card-0,
-    .perspective-stack:focus-within .perspective-card-0 {
-      transform: translate(-20%, -12%) rotate(-10deg) scale(1.03);
-    }
-
-    .perspective-stack:hover .perspective-card-1,
-    .perspective-stack:focus-within .perspective-card-1 {
-      transform: translate(28%, 18%) rotate(12deg) scale(1.03);
-    }
-
-    .perspective-card-0:hover,
-    .perspective-card-0:focus-visible {
-      transform: translate(-20%, -12%) rotate(-5deg) scale(1.08) !important;
-    }
-
-    .perspective-card-1:hover,
-    .perspective-card-1:focus-visible {
-      transform: translate(28%, 18%) rotate(6deg) scale(1.08) !important;
+    .image-fan:hover,
+    .image-fan:focus-within {
+      --fan-spread: 40%;
+      --fan-lift: 16%;
+      --fan-tilt: 16deg;
     }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .perspective-card,
-    .perspective-stack:hover .perspective-card-0,
-    .perspective-stack:hover .perspective-card-1,
-    .perspective-card-0:hover,
-    .perspective-card-1:hover {
+    .image-fan-card {
       transition: none;
-      transform: none !important;
     }
   }
 
-  .perspective-lightbox {
-    margin: auto;
-    padding: 0;
+  .lightbox {
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    max-height: none;
+    margin: 0;
+    padding: 1.5rem;
     border: none;
-    border-radius: var(--radius-nav);
-    max-width: min(92vw, 52rem);
-    width: max-content;
-    background: var(--color-surface);
-    box-shadow: 0 16px 48px color-mix(in srgb, var(--color-ink) 22%, transparent);
+    background: color-mix(in srgb, var(--color-ink) 82%, transparent);
   }
 
-  .perspective-lightbox::backdrop {
-    background: color-mix(in srgb, var(--color-ink) 55%, transparent);
+  .lightbox[open] {
+    display: grid;
+    place-items: center;
   }
 
-  .perspective-lightbox-inner {
-    position: relative;
-    padding: 0.75rem 0.75rem 1rem;
+  .lightbox::backdrop {
+    background: color-mix(in srgb, var(--color-ink) 72%, transparent);
   }
 
-  .perspective-lightbox-inner img {
+  .lightbox img {
     display: block;
-    max-width: min(88vw, 48rem);
-    max-height: min(72vh, 40rem);
+    max-width: min(96vw, 72rem);
+    max-height: 90dvh;
     width: auto;
     height: auto;
-    margin: 0 auto;
+    object-fit: contain;
+    border-radius: var(--radius-nav);
+    box-shadow: 0 16px 48px color-mix(in srgb, #000 40%, transparent);
   }
 
-  .perspective-lightbox-close {
+  .lightbox-close {
     position: absolute;
-    top: 0.35rem;
-    right: 0.35rem;
+    top: 0.85rem;
+    right: 0.85rem;
     z-index: 1;
-    width: 2.25rem;
-    height: 2.25rem;
+    width: 2.5rem;
+    height: 2.5rem;
     border: none;
     border-radius: 999px;
-    background: color-mix(in srgb, var(--color-ink) 8%, var(--color-surface));
-    color: var(--color-ink);
-    font-size: 1.35rem;
+    background: color-mix(in srgb, #fff 18%, transparent);
+    color: #fff;
+    font-size: 1.5rem;
     line-height: 1;
     cursor: pointer;
+  }
+
+  .lightbox-close:hover,
+  .lightbox-close:focus-visible {
+    background: color-mix(in srgb, #fff 32%, transparent);
   }
 
   .button-brand {
