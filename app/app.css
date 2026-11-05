@@ -280,18 +280,19 @@
     }
 
     .home-about-aside-illustrations {
-      width: min(22rem, 100%);
+      width: min(20rem, 100%);
       justify-self: center;
-      margin-top: 0.5rem;
-      padding: 1.5rem 0.5rem 1.75rem;
+      margin-inline: auto;
+      margin-top: 0.75rem;
+      padding: 0.5rem;
     }
   }
 
   /* Right-column slot for ImageFan on about / home */
   .home-about-aside-illustrations {
-    width: 26rem;
-    padding: 1.75rem 1.25rem 2rem;
-    overflow: visible;
+    width: 22rem;
+    padding: 0.5rem;
+    overflow: hidden;
   }
 
   @media (min-width: 701px) {
@@ -302,59 +303,41 @@
   }
 
   /*
-    ImageFan — reusable overlapping photo fan.
-    --fan-count / --fan-i set in the component. Rest spread is wide enough
-    that both cards are readable without hover.
+    ImageFan — overlapping photos that stay inside this box.
+    Positions are % of the container. Hover only raises z-index.
   */
   .image-fan {
     --fan-mid: calc((var(--fan-count) - 1) / 2);
     --fan-div: max(var(--fan-mid), 0.5);
-    --fan-spread: 42%;
-    --fan-lift: 14%;
-    --fan-tilt: 16deg;
-    --fan-card: 64%;
+    --fan-spread: 11%;
+    --fan-lift: 4%;
+    --fan-tilt: 5deg;
+    --fan-card: 70%;
     position: relative;
     z-index: 1;
     width: 100%;
-    aspect-ratio: 5 / 4;
-  }
-
-  .image-fan:hover,
-  .image-fan:focus-within {
-    z-index: 4;
-    --fan-spread: 56%;
-    --fan-lift: 18%;
-    --fan-tilt: 20deg;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
   }
 
   .image-fan-card {
+    --fan-t: calc((var(--fan-i) - var(--fan-mid)) / var(--fan-div));
     position: absolute;
-    top: 50%;
-    left: 50%;
+    top: calc(50% + var(--fan-t) * var(--fan-lift));
+    left: calc(50% + var(--fan-t) * var(--fan-spread));
     z-index: calc(var(--fan-count) - var(--fan-i));
     width: var(--fan-card);
     aspect-ratio: 4 / 3;
     padding: 0;
     margin: 0;
     border: 1px solid color-mix(in srgb, var(--color-ink) 12%, transparent);
-    border-radius: 0.85rem;
+    border-radius: 0.75rem;
     overflow: hidden;
     background: var(--color-surface-raised);
     cursor: pointer;
-    box-shadow: 0 6px 22px color-mix(in srgb, var(--color-ink) 16%, transparent);
-    transform-origin: center center;
-    transform: translate(-50%, -50%)
-      translate(
-        calc((var(--fan-i) - var(--fan-mid)) / var(--fan-div) * var(--fan-spread)),
-        calc((var(--fan-i) - var(--fan-mid)) / var(--fan-div) * var(--fan-lift))
-      )
-      rotate(
-        calc((var(--fan-i) - var(--fan-mid)) / var(--fan-div) * var(--fan-tilt))
-      );
-    transition:
-      transform 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275),
-      box-shadow 0.45s ease,
-      z-index 0s;
+    box-shadow: 0 4px 16px color-mix(in srgb, var(--color-ink) 14%, transparent);
+    transform: translate(-50%, -50%) rotate(calc(var(--fan-t) * var(--fan-tilt)));
+    transition: box-shadow 0.2s ease;
   }
 
   .image-fan-card img {
@@ -369,7 +352,7 @@
   .image-fan-card:hover,
   .image-fan-card:focus-visible {
     z-index: 8;
-    box-shadow: 0 14px 36px color-mix(in srgb, var(--color-ink) 24%, transparent);
+    box-shadow: 0 10px 28px color-mix(in srgb, var(--color-ink) 22%, transparent);
   }
 
   .image-fan-card:focus-visible {
@@ -379,18 +362,10 @@
 
   @media (max-width: 700px) {
     .image-fan {
-      --fan-spread: 30%;
-      --fan-lift: 12%;
-      --fan-tilt: 13deg;
-      --fan-card: 56%;
-      aspect-ratio: 16 / 11;
-    }
-
-    .image-fan:hover,
-    .image-fan:focus-within {
-      --fan-spread: 40%;
-      --fan-lift: 16%;
-      --fan-tilt: 16deg;
+      --fan-spread: 8%;
+      --fan-lift: 0%;
+      --fan-tilt: 4deg;
+      --fan-card: 60%;
     }
   }
 

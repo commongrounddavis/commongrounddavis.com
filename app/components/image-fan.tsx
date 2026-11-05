@@ -9,8 +9,8 @@ type FanStyle = React.CSSProperties & {
 };
 
 /**
- * Overlapping photo fan. Both images are readable at rest; hover fans them
- * farther apart; click opens a full-screen lightbox.
+ * Overlapping photo fan. Cards stay inside the frame; both are visible at
+ * rest. Hover brings a card to the front. Click opens a full-screen lightbox.
  *
  *   <ImageFan images={[{ src, width, height }]} />
  */
