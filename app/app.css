@@ -44,6 +44,7 @@
   html {
     color-scheme: light;
     scroll-behavior: smooth;
+    overflow-x: clip;
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -60,6 +61,7 @@
     font-family: var(--font-sans);
     font-size: 1rem;
     line-height: 1.55;
+    overflow-x: clip;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -204,6 +206,15 @@
     grid-template-columns: minmax(0, 1fr) auto;
     align-items: center;
     gap: 1.25rem 3rem;
+    overflow: visible;
+  }
+
+  .home-about-row-align-start {
+    align-items: start;
+  }
+
+  .home-about-aside {
+    justify-self: end;
   }
 
   /* Short-form lead copy: UI font. Serif is reserved for .prose-stack / bios. */
@@ -267,6 +278,130 @@
       order: -1;
       justify-self: center;
     }
+
+    .home-about-aside-illustrations {
+      width: 100%;
+      max-width: 22rem;
+      justify-self: center;
+      margin-inline: auto;
+      margin-top: 1rem;
+      padding: 0;
+    }
+  }
+
+  /* Right-column slot for ImageSet on about / home */
+  .home-about-aside-illustrations {
+    width: 16.5rem;
+  }
+
+  @media (min-width: 701px) {
+    .home-about-aside-illustrations {
+      position: sticky;
+      top: 1.5rem;
+    }
+  }
+
+  /* ImageSet — equal tiles, no overlap. Stack on desktop; two-up on mobile if 2+. */
+  .image-set {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.7rem;
+    width: 100%;
+  }
+
+  .image-set-card {
+    display: block;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-nav);
+    overflow: hidden;
+    background: var(--color-surface-raised);
+    cursor: pointer;
+    transition:
+      border-color 0.15s ease,
+      box-shadow 0.15s ease;
+  }
+
+  .image-set-card img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    object-fit: contain;
+    background: #fff;
+  }
+
+  .image-set-card:hover,
+  .image-set-card:focus-visible {
+    border-color: color-mix(in srgb, var(--color-side-blue) 40%, var(--color-border));
+    box-shadow: 0 4px 14px color-mix(in srgb, var(--color-ink) 10%, transparent);
+  }
+
+  .image-set-card:focus-visible {
+    outline: 2px solid var(--color-side-red);
+    outline-offset: 2px;
+  }
+
+  @media (max-width: 700px) {
+    .image-set:has(.image-set-card:nth-child(2)) {
+      grid-template-columns: 1fr 1fr;
+      gap: 0.55rem;
+    }
+  }
+
+  .lightbox {
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    max-height: none;
+    margin: 0;
+    padding: 1.5rem;
+    border: none;
+    background: color-mix(in srgb, var(--color-ink) 82%, transparent);
+  }
+
+  .lightbox[open] {
+    display: grid;
+    place-items: center;
+  }
+
+  .lightbox::backdrop {
+    background: color-mix(in srgb, var(--color-ink) 72%, transparent);
+  }
+
+  .lightbox img {
+    display: block;
+    max-width: min(96vw, 72rem);
+    max-height: 90dvh;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: var(--radius-nav);
+    box-shadow: 0 16px 48px color-mix(in srgb, #000 40%, transparent);
+  }
+
+  .lightbox-close {
+    position: absolute;
+    top: 0.85rem;
+    right: 0.85rem;
+    z-index: 1;
+    width: 2.5rem;
+    height: 2.5rem;
+    border: none;
+    border-radius: 999px;
+    background: color-mix(in srgb, #fff 18%, transparent);
+    color: #fff;
+    font-size: 1.5rem;
+    line-height: 1;
+    cursor: pointer;
+  }
+
+  .lightbox-close:hover,
+  .lightbox-close:focus-visible {
+    background: color-mix(in srgb, #fff 32%, transparent);
   }
 
   .button-brand {
@@ -1256,6 +1391,89 @@
 
   .prose-stack p strong {
     color: var(--color-ink);
+  }
+
+  .problem-examples {
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .prose-stack .problem-examples-label {
+    margin: 0.15rem 0 0.15rem;
+    font-size: 0.9rem;
+    font-weight: 700;
+    line-height: 1.4;
+    color: var(--color-ink-muted);
+  }
+
+  .problem-example {
+    border-top: 1px solid var(--color-border);
+    interpolate-size: allow-keywords;
+  }
+
+  .problem-example summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    min-height: 44px;
+    padding: 0.35rem 0;
+    list-style: none;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: clamp(1.1rem, 1.4vw, 1.25rem);
+    line-height: 1.4;
+    color: var(--color-ink);
+  }
+
+  .problem-example summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .problem-example summary::marker {
+    content: "";
+  }
+
+  .problem-example summary:focus-visible {
+    outline: 2px solid var(--color-side-red);
+    outline-offset: 2px;
+  }
+
+  .problem-chevron {
+    flex: 0 0 auto;
+    width: 0.55rem;
+    height: 0.55rem;
+    border-right: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
+    transform: rotate(45deg);
+    transition: transform 0.2s ease;
+    margin-right: 0.15rem;
+  }
+
+  .problem-example[open] .problem-chevron {
+    transform: rotate(-135deg);
+  }
+
+  .problem-example::details-content {
+    height: 0;
+    overflow: clip;
+    transition:
+      height 0.25s ease,
+      content-visibility 0.25s ease allow-discrete;
+  }
+
+  .problem-example[open]::details-content {
+    height: auto;
+  }
+
+  .problem-example p {
+    padding-bottom: 1rem;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .problem-chevron,
+    .problem-example::details-content {
+      transition: none;
+    }
   }
 
   .section-kicker {
