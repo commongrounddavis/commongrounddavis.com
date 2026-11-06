@@ -138,7 +138,7 @@ export default function About(): React.ReactNode {
               <ProblemParagraph key={paragraph.slice(0, 24)} text={paragraph} />
             ))}
             <div className="problem-examples">
-              <div className="problem-examples-label">More examples</div>
+              <div className="problem-examples-label">Examples</div>
               {PROBLEM_EXAMPLES.map((example) => (
                 <details key={example.topic} className="problem-example">
                   <summary>

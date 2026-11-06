@@ -61,11 +61,13 @@ Political polarization is a growing problem in the United States and at UC Davis
 
 Not to mention the growing misinformation crisis. Whether you're a Democrat or a Republican, ask yourself this: the reasons you dislike the other side, did you hear them directly from the other side, or are they what you think the other side believes? Most of what we know about the other side comes from our friends or our social media feeds. And even when we do hear it from them, it's usually one clip, one tweet, or the loudest person, not the full argument. So we end up hating the other side over beliefs most of them don't even hold.
 
-Take guns. The left hears, "They care more about their guns than people's lives." The right hears, "They want to take away your right to defend yourself." But most gun owners worry that criminals will always get guns illegally, so stricter laws would only take guns from the people trying to protect themselves. Many of them still support stronger background checks. And most people pushing for gun laws just want fewer kids to die at school. Both sides want the same thing: guns out of the wrong hands.
-
 Neither side is evil. We're both arguing against strawmen: beliefs that are either false or taken out of context. The fix is hearing the other side's full argument, and that's what we're here for.
 
-More examples
+Examples
+
+Guns
+
+Take guns. The left hears, "They care more about their guns than people's lives." The right hears, "They want to take away your right to defend yourself." But most gun owners worry that criminals will always get guns illegally, so stricter laws would only take guns from the people trying to protect themselves. Many of them still support stronger background checks. And most people pushing for gun laws just want fewer kids to die at school. Both sides want the same thing: guns out of the wrong hands.
 
 Policing
 
