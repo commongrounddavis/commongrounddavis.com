@@ -1,5 +1,6 @@
 import { Link } from "react-router";
 import type { Route } from "./+types/_index";
+import { PerspectiveIllustrations } from "../components/perspective-illustrations";
 import { HOME_ABOUT_TEASE } from "../config/about";
 import { WHAT_WE_DO } from "../config/format";
 import {
@@ -94,7 +95,7 @@ export default function Home(): React.ReactNode {
 
       <section id="about" className="home-section">
         <h1>About us</h1>
-        <div className="home-about-row">
+        <div className="home-about-row home-about-row-align-start">
           <div className="home-lead home-lead-stack">
             {HOME_ABOUT_TEASE.map((p) => (
               <p key={p.slice(0, 32)}>{p}</p>
@@ -105,11 +106,9 @@ export default function Home(): React.ReactNode {
               </Link>
             </p>
           </div>
-          <div className="home-about-marks">
-            <span className="home-about-mark home-about-mark-cgd">
-              <img src="/logo-on-white.svg" alt="" width={176} height={176} />
-            </span>
-          </div>
+          <aside className="home-about-aside home-about-aside-illustrations">
+            <PerspectiveIllustrations />
+          </aside>
         </div>
       </section>
 

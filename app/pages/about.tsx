@@ -1,10 +1,15 @@
 import { Link } from "react-router";
 import type { Route } from "./+types/about";
+import { PerspectiveIllustrations } from "../components/perspective-illustrations";
 import {
   ABOUT_CONDENSED,
   ABOUT_FOUNDING,
   ABOUT_FULL,
+  ABOUT_PROBLEM,
   FOUNDING_ESSAY_URL,
+  ILLUSTRATION_MEDIA,
+  ILLUSTRATION_SIX_NINE,
+  PROBLEM_EXAMPLES,
 } from "../config/about";
 import { pageMeta } from "../config/site";
 
@@ -17,8 +22,6 @@ export function meta(_: Route.MetaArgs) {
 }
 
 const SECTIONS = [
-  { title: "The Problem", body: ABOUT_FULL[1] },
-  { title: "What we believe", body: ABOUT_FULL[2] },
   { title: "The Steelman argument", body: ABOUT_FULL[3] },
   { title: "Our goal", body: ABOUT_FULL[4] },
 ] as const;
@@ -84,6 +87,22 @@ function FoundingParagraph(): React.ReactNode {
   );
 }
 
+/** Underline "directly" and italicize "think" in the misinformation paragraph. */
+function ProblemParagraph({ text }: { text: string }): React.ReactNode {
+  const mark = "hear them directly from the other side, or are they what you think ";
+  const at = text.indexOf(mark);
+  if (at === -1) return <p>{text}</p>;
+  const before = text.slice(0, at);
+  const after = text.slice(at + mark.length);
+  return (
+    <p>
+      {before}
+      hear them <u>directly</u> from the other side, or are they what you <i>think</i>{" "}
+      {after}
+    </p>
+  );
+}
+
 export default function About(): React.ReactNode {
   return (
     <>
@@ -107,6 +126,45 @@ export default function About(): React.ReactNode {
         <h1>How it started</h1>
         <div className="prose-stack">
           <FoundingParagraph />
+        </div>
+      </section>
+
+      <section className="home-section">
+        <h1>The Problem</h1>
+        <div className="home-about-row home-about-row-align-start">
+          <div className="prose-stack" style={{ marginTop: 0 }}>
+            <p>{ABOUT_PROBLEM[0]}</p>
+            {ABOUT_PROBLEM.slice(1).map((paragraph) => (
+              <ProblemParagraph key={paragraph.slice(0, 24)} text={paragraph} />
+            ))}
+            <div className="problem-examples">
+              <div className="problem-examples-label">Examples</div>
+              {PROBLEM_EXAMPLES.map((example) => (
+                <details key={example.topic} className="problem-example">
+                  <summary>
+                    <span>{example.topic}</span>
+                    <span className="problem-chevron" aria-hidden="true" />
+                  </summary>
+                  <p>{example.body}</p>
+                </details>
+              ))}
+            </div>
+          </div>
+          <aside className="home-about-aside home-about-aside-illustrations">
+            <PerspectiveIllustrations images={[ILLUSTRATION_MEDIA]} />
+          </aside>
+        </div>
+      </section>
+
+      <section className="home-section">
+        <h1>What we believe</h1>
+        <div className="home-about-row home-about-row-align-start">
+          <div className="prose-stack" style={{ marginTop: 0 }}>
+            <p>{ABOUT_FULL[2]}</p>
+          </div>
+          <aside className="home-about-aside home-about-aside-illustrations">
+            <PerspectiveIllustrations images={[ILLUSTRATION_SIX_NINE]} />
+          </aside>
         </div>
       </section>
 
