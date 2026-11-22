@@ -11,7 +11,7 @@ import {
 import type { Route } from "./+types/root";
 import { NotFoundPage, ServerErrorPage } from "./components/error-pages";
 import { SiteShell } from "./components/site-shell";
-import { pageMeta } from "./config/site";
+import { GA_MEASUREMENT_ID, pageMeta } from "./config/site";
 import "./app.css";
 
 /** Default social / SEO tags — pages can override title/description/path. */
@@ -51,6 +51,19 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <Meta />
         <Links />
+        {GA_MEASUREMENT_ID ? (
+          <>
+            <script
+              async
+              src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+            />
+            <script
+              dangerouslySetInnerHTML={{
+                __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date());gtag("config",${JSON.stringify(GA_MEASUREMENT_ID)});`,
+              }}
+            />
+          </>
+        ) : null}
       </head>
       <body>
         {children}

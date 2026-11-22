@@ -28,6 +28,13 @@ export function metaDescription(text: string, max = 180): string {
   return `${slice.slice(0, at > 40 ? at : max - 1)}…`;
 }
 
+/**
+ * Google Analytics 4 measurement ID ("G-XXXXXXXXXX"). Public by design — it ships
+ * in every page. Empty = analytics off. Page views on client-side navigation are
+ * tracked by GA4 Enhanced Measurement ("page changes based on browser history").
+ */
+export const GA_MEASUREMENT_ID = "";
+
 /** Shared title + description + Open Graph / Twitter tags for link embeds. */
 export function pageMeta({
   title,
