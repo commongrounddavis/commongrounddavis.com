@@ -1,10 +1,9 @@
 import { useState } from "react";
 import { Link } from "react-router";
 import type { Route } from "./+types/support";
+import { DISCORD_INVITE_URL, GITHUB_REPO_URL } from "../config/links";
 import {
-  DISCORD_INVITE_URL,
   GITHUB_REPO_LABEL,
-  GITHUB_REPO_URL,
   SITE_NAME,
   WEBSITE_MAINTAINER_NAME,
   WEBSITE_SUPPORT_DISCORD_HANDLE,

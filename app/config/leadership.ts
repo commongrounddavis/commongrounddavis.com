@@ -23,7 +23,11 @@ export type Person = {
   bio: string;
   /** Shown as a "Founder" tag everywhere. */
   founder?: boolean;
-  email?: string;
+  /**
+   * Required. Shown on the Team page; /contact tells people that only these
+   * addresses speak for the club, so every officer needs one.
+   */
+  email: string;
   discordHandle?: string;
   discordUserId?: string;
   instagram?: string;

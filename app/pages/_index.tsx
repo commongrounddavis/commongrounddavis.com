@@ -9,14 +9,26 @@ import {
   REGISTERING,
   REGULAR_MEETING,
 } from "../config/meetings";
+import { LINKS } from "../config/links";
 import {
-  DISCORD_INVITE_URL,
   SITE_DESCRIPTION,
   SITE_NAME,
   SITE_URL,
   absoluteUrl,
   pageMeta,
 } from "../config/site";
+
+/** Every club account that exists, for search engines. */
+const SAME_AS = [
+  LINKS.discordInvite,
+  LINKS.aggieLife,
+  LINKS.instagram,
+  LINKS.x,
+  LINKS.facebook,
+  LINKS.tiktok,
+  LINKS.youtube,
+  LINKS.linkedin,
+].filter(Boolean);
 
 export function meta(_: Route.MetaArgs) {
   return pageMeta({
@@ -28,7 +40,7 @@ export function meta(_: Route.MetaArgs) {
       url: SITE_URL,
       logo: absoluteUrl("/logo.png"),
       description: SITE_DESCRIPTION,
-      ...(DISCORD_INVITE_URL ? { sameAs: [DISCORD_INVITE_URL] } : {}),
+      ...(SAME_AS.length ? { sameAs: SAME_AS } : {}),
     },
   });
 }

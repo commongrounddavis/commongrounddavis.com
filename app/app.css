@@ -294,13 +294,6 @@
     width: 16.5rem;
   }
 
-  @media (min-width: 701px) {
-    .home-about-aside-illustrations {
-      position: sticky;
-      top: 1.5rem;
-    }
-  }
-
   /* ImageSet — equal tiles, no overlap. Stack on desktop; two-up on mobile if 2+. */
   .image-set {
     display: grid;
@@ -351,16 +344,19 @@
     }
   }
 
+  /* Full-screen image viewer: one dim layer, image always fits the screen. */
   .lightbox {
+    position: fixed;
     inset: 0;
+    box-sizing: border-box;
     width: 100%;
     height: 100%;
     max-width: none;
     max-height: none;
     margin: 0;
-    padding: 1.5rem;
+    padding: 3.5rem 1rem 1.5rem;
     border: none;
-    background: color-mix(in srgb, var(--color-ink) 82%, transparent);
+    background: transparent;
   }
 
   .lightbox[open] {
@@ -369,18 +365,23 @@
   }
 
   .lightbox::backdrop {
-    background: color-mix(in srgb, var(--color-ink) 72%, transparent);
+    background: rgb(0 0 0 / 0.85);
+  }
+
+  /* No page scrolling behind an open image. */
+  html:has(.lightbox[open]) {
+    overflow: hidden;
   }
 
   .lightbox img {
     display: block;
-    max-width: min(96vw, 72rem);
-    max-height: 90dvh;
+    max-width: min(100%, 72rem);
+    max-height: 100%;
     width: auto;
     height: auto;
     object-fit: contain;
     border-radius: var(--radius-nav);
-    box-shadow: 0 16px 48px color-mix(in srgb, #000 40%, transparent);
+    box-shadow: 0 16px 48px rgb(0 0 0 / 0.4);
   }
 
   .lightbox-close {
@@ -955,23 +956,29 @@
     color: var(--color-ink-muted);
   }
 
-  .site-footer-mobile,
-  .site-footer-desktop {
+  /* Mobile: one centered column, links first, credits last. */
+  .site-footer-inner {
     max-width: var(--content-max);
     margin-inline: auto;
     padding: 1.75rem var(--page-gutter);
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: 1.25rem;
+    text-align: center;
   }
 
-  .site-footer-desktop {
-    display: none;
-  }
-
-  .site-footer-mobile {
+  .site-footer-left,
+  .site-footer-right {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1.1rem;
-    text-align: center;
+    gap: 0.85rem;
+    min-width: 0;
+  }
+
+  .site-footer-left {
+    gap: 0.5rem;
   }
 
   .site-footer-credits p {
@@ -980,27 +987,29 @@
     line-height: 1.6;
   }
 
-  .site-footer-credits a {
-    color: inherit;
-    text-decoration: underline;
-    text-underline-offset: 2px;
-  }
-
   .site-footer-muted {
-    margin-top: 0.2rem !important;
+    margin-top: 0.1rem !important;
     font-size: 0.75rem !important;
     opacity: 0.75;
   }
 
-  .site-footer-reach {
+  .site-footer-reach,
+  .site-footer-secondary {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    gap: 0.35rem 0.85rem;
-    font-size: 0.9rem;
+    gap: 0.35rem 0;
     line-height: 1.6;
+  }
+
+  .site-footer-reach {
+    font-size: 0.9rem;
     color: var(--color-ink);
+  }
+
+  .site-footer-secondary {
+    font-size: 0.75rem;
   }
 
   .site-footer-dot-item {
@@ -1009,27 +1018,52 @@
   }
 
   .site-footer-dot {
-    display: none;
     margin-inline: 0.45rem;
     opacity: 0.55;
     user-select: none;
   }
 
-  .site-footer-reach a {
+  .site-footer-reach a,
+  .site-footer-secondary a {
     color: inherit;
     text-decoration: none;
     white-space: nowrap;
   }
 
-  .site-footer-reach a:hover {
+  .site-footer-reach a:hover,
+  .site-footer-secondary a:hover {
     text-decoration: underline;
+    text-decoration-color: var(--color-side-blue);
     text-underline-offset: 2px;
   }
 
   .site-footer-social {
+    list-style: none;
+    margin: 0;
+    padding: 0;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-    gap: 0.75rem;
+    gap: 0.5rem;
+  }
+
+  /* Icon buttons — same as daviscollegerepublicans.com */
+  .site-footer-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+    color: var(--color-ink);
+    text-decoration: none;
+  }
+
+  .site-footer-icon:hover,
+  .site-footer-icon:focus-visible {
+    border-color: var(--color-ink);
+    background: var(--color-surface);
   }
 
 
@@ -1327,50 +1361,32 @@
     }
   }
 
-  /* Desktop footer: left credits, right social + nav (vijitdua.com pattern) */
+  /* Desktop footer: credits left; icons + page links right. */
   @media (min-width: 860px) {
-    .site-footer-mobile {
-      display: none;
-    }
-
-    .site-footer-desktop {
-      display: flex;
+    .site-footer-inner {
+      flex-direction: row;
       justify-content: space-between;
       align-items: flex-end;
       gap: 2rem;
-    }
-
-    .site-footer-desktop-left {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 0.35rem;
-      min-width: 0;
-    }
-
-    .site-footer-desktop-right {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      gap: 0.85rem;
-      flex-shrink: 0;
-    }
-
-    .site-footer-credits {
       text-align: left;
     }
 
-    .site-footer-reach {
-      justify-content: flex-end;
-      gap: 0;
+    .site-footer-left {
+      align-items: flex-start;
     }
 
-    .site-footer-dot {
-      display: inline;
+    .site-footer-right {
+      align-items: flex-end;
+      flex-shrink: 0;
     }
 
+    .site-footer-reach,
     .site-footer-social {
       justify-content: flex-end;
+    }
+
+    .site-footer-secondary {
+      justify-content: flex-start;
     }
   }
 
@@ -2183,5 +2199,529 @@
     flex-wrap: wrap;
     gap: 1rem 1.5rem;
     align-items: center;
+  }
+
+  /* /links — same chrome as the rest of the site, narrow centered list */
+  .link-tree {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .link-tree-avatar {
+    width: 6.5rem;
+    height: 6.5rem;
+    object-fit: contain;
+    margin-bottom: 1.25rem;
+  }
+
+  .link-tree-tagline,
+  .link-tree-bio {
+    margin-top: 0.85rem;
+    max-width: 28rem;
+    color: var(--color-ink-muted);
+    font-size: 1.05rem;
+    line-height: 1.5;
+  }
+
+  .link-tree-list {
+    list-style: none;
+    margin: 2rem 0 0;
+    padding: 0;
+    width: min(100%, 28rem);
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .link-tree-row {
+    display: grid;
+    grid-template-columns: 2.25rem 1fr 2.25rem;
+    align-items: center;
+    min-height: 3.5rem;
+    padding: 0.7rem 0.85rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-nav);
+    background: var(--color-surface-raised);
+    color: var(--color-ink);
+    text-decoration: none;
+  }
+
+  .link-tree-row:hover {
+    border-color: var(--color-brand);
+  }
+
+  .link-tree-icon {
+    display: flex;
+    justify-content: center;
+    color: var(--color-brand);
+  }
+
+  .link-tree-copy {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.1rem;
+    min-width: 0;
+  }
+
+  .link-tree-label {
+    font-weight: 700;
+    font-size: 1.02rem;
+    line-height: 1.2;
+  }
+
+  .link-tree-desc {
+    font-size: 0.82rem;
+    color: var(--color-ink-muted);
+    line-height: 1.2;
+  }
+
+  /* /directory — vijitdua.com/directory style: name + every path, expandable */
+  .directory-intro {
+    margin-top: 1rem;
+    display: grid;
+    gap: 0.25rem;
+    color: var(--color-ink-muted);
+  }
+
+  .directory-intro p {
+    margin: 0;
+  }
+
+  .directory-intro kbd {
+    display: inline-block;
+    min-width: 1.4em;
+    padding: 0 0.35em;
+    font: inherit;
+    font-size: 0.85em;
+    font-weight: 600;
+    text-align: center;
+    color: var(--color-ink);
+    background: var(--color-surface-raised);
+    border: 1px solid var(--color-border);
+    border-bottom-width: 2px;
+    border-radius: 0.3rem;
+  }
+
+  /* Plain two-column list: name left, path(s) right. No borders, never wraps. */
+  .directory-table {
+    margin-top: 2.5rem;
+    padding-left: 1.75rem; /* gutter for the + toggles */
+  }
+
+  .directory-head,
+  .directory-row {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 2rem;
+    align-items: baseline;
+  }
+
+  .directory-head {
+    padding-bottom: 0.5rem;
+  }
+
+  .directory-head button {
+    justify-self: start;
+    padding: 0;
+    font: inherit;
+    font-size: 0.9rem;
+    color: var(--color-ink-muted);
+    background: none;
+    border: 0;
+    cursor: pointer;
+  }
+
+  .directory-head button:last-child {
+    justify-self: end;
+  }
+
+  .directory-head button:hover {
+    color: var(--color-ink);
+  }
+
+  .directory-row {
+    padding: 0.45rem 0;
+  }
+
+  .directory-name {
+    position: relative;
+    min-width: 0;
+    white-space: nowrap;
+  }
+
+  .directory-name a {
+    font-size: 1.15rem;
+    color: var(--color-ink);
+    text-decoration: none;
+  }
+
+  .directory-name a:hover,
+  .directory-paths a:hover {
+    color: var(--color-brand);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .directory-toggle {
+    position: absolute;
+    left: -1.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1.25rem;
+    height: 1.25rem;
+    padding: 0;
+    font: inherit;
+    font-size: 1.2rem;
+    line-height: 1;
+    color: var(--color-ink);
+    background: none;
+    border: 0;
+    cursor: pointer;
+  }
+
+  .directory-toggle:hover {
+    color: var(--color-brand);
+  }
+
+  .directory-paths {
+    min-width: 0;
+    text-align: right;
+    font-size: 0.95rem;
+    color: var(--color-ink-muted);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .directory-paths a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .directory-children .directory-row {
+    padding: 0.3rem 0;
+  }
+
+  .directory-children .directory-name {
+    padding-left: 1.25rem;
+  }
+
+  .directory-children .directory-name a {
+    font-size: 1rem;
+    color: var(--color-ink-muted);
+  }
+
+  @media (max-width: 560px) {
+    .directory-head,
+    .directory-row {
+      gap: 1rem;
+    }
+
+    .directory-name a {
+      font-size: 1.05rem;
+    }
+
+    .directory-paths {
+      font-size: 0.85rem;
+    }
+  }
+
+  /* Footer icons: fit one row on small phones. */
+  @media (max-width: 480px) {
+    .site-footer-social {
+      gap: 0.4rem;
+    }
+
+    .site-footer-icon {
+      width: 2.25rem;
+      height: 2.25rem;
+    }
+  }
+
+  /* Quiet secondary button (pairs with .button-brand) */
+  .button-quiet {
+    display: inline-flex;
+    align-items: center;
+    width: fit-content;
+    min-height: 3rem;
+    padding: 0.7rem 1.4rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-ink);
+    background: var(--color-surface-raised);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-nav);
+    text-decoration: none;
+  }
+
+  .button-quiet:hover {
+    border-color: var(--color-ink-muted);
+  }
+
+  /* Contact — shared inbox address + Confluence-style info note */
+  .contact-inbox {
+    font-weight: 500;
+    color: var(--color-ink);
+    white-space: nowrap;
+  }
+
+  /* "Is a reply really from us?" — ✓ real / ✗ not us check */
+  .contact-reach {
+    margin: 0.3rem 0 0;
+    font-size: 0.95rem;
+    color: var(--color-ink-muted);
+  }
+
+  .reply-check {
+    margin-top: 1.5rem;
+    max-width: 44rem;
+    font-size: 0.9rem;
+  }
+
+  .reply-check-title {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-ink);
+  }
+
+  .reply-check-row {
+    display: grid;
+    grid-template-columns: 5.25rem minmax(0, 1fr);
+    align-items: baseline;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+  }
+
+  .reply-check-label {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.35rem;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  /* Plain colored glyph — no filled circle. */
+  .reply-check-mark {
+    font-size: 0.85rem;
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  .is-real .reply-check-label {
+    color: #2e6b45;
+  }
+
+  .is-fake .reply-check-label {
+    color: #9b3a37;
+  }
+
+  .reply-check-chips {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+  }
+
+  .reply-check-chips li {
+    padding: 0.1rem 0.55rem;
+    font-size: 0.825rem;
+    color: #2e6b45;
+    background: #edf6f0;
+    border-radius: 999px;
+    white-space: nowrap;
+  }
+
+  .is-fake .reply-check-chips li {
+    color: #9b3a37;
+    background: #f9eeed;
+  }
+
+  .reply-check-addr {
+    text-decoration: line-through;
+    text-decoration-color: color-mix(in srgb, #9b3a37 45%, transparent);
+  }
+
+  .reply-check-why {
+    opacity: 0.75;
+  }
+
+  .reply-check-foot {
+    margin: 0.75rem 0 0;
+    font-size: 0.85rem;
+    color: var(--color-ink-muted);
+  }
+
+  .reply-check-foot a {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-color: var(--color-side-blue);
+    text-underline-offset: 2px;
+  }
+
+  @media (max-width: 560px) {
+    .reply-check-row {
+      grid-template-columns: 1fr;
+      gap: 0.35rem;
+      margin-top: 0.85rem;
+    }
+
+  }
+
+  /* /constitution — current version card + past versions list */
+  .doc-card {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 1.25rem;
+    margin-top: 2rem;
+    padding: 1.25rem 1.4rem;
+    background: var(--color-surface-raised);
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+  }
+
+  .doc-icon {
+    display: grid;
+    place-items: center;
+    align-self: start;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 0.6rem;
+    color: var(--color-brand);
+    background: var(--color-brand-soft);
+  }
+
+  .doc-icon svg {
+    width: 1.5rem;
+    height: 1.5rem;
+    fill: currentColor;
+  }
+
+  .doc-title {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 1.25rem;
+  }
+
+  .doc-meta {
+    margin: 0.2rem 0 0;
+    font-size: 0.9rem;
+    color: var(--color-ink-muted);
+  }
+
+  .doc-summary {
+    margin: 0.5rem 0 0;
+    font-size: 0.95rem;
+    line-height: 1.55;
+  }
+
+  .doc-actions {
+    display: flex;
+    gap: 0.6rem;
+  }
+
+  .doc-pill {
+    display: inline-block;
+    padding: 0.1rem 0.6rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    line-height: 1.6;
+    border-radius: 999px;
+    white-space: nowrap;
+    vertical-align: middle;
+  }
+
+  .doc-pill.is-current {
+    color: var(--color-brand-dark);
+    background: var(--color-brand-soft);
+  }
+
+  .doc-pill.is-replaced {
+    color: var(--color-ink-muted);
+    background: var(--color-border);
+  }
+
+  .doc-pill.is-reversed {
+    color: #a3221f;
+    background: #fbe3e2;
+  }
+
+  .doc-history-title {
+    margin-top: 3rem;
+    font-size: 1.1rem;
+  }
+
+  .doc-history {
+    list-style: none;
+    margin: 0.75rem 0 0;
+    padding: 0;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .doc-history li {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1.25rem;
+    padding: 1.1rem 0.25rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .doc-history-main {
+    min-width: 0;
+  }
+
+  .doc-history-head {
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .doc-history .doc-summary {
+    color: var(--color-ink-muted);
+  }
+
+  .doc-history-pdf {
+    flex: 0 0 auto;
+    padding: 0.35rem 0.75rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-ink);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-nav);
+    background: var(--color-surface-raised);
+    text-decoration: none;
+  }
+
+  .doc-history-pdf:hover {
+    color: var(--color-brand);
+    border-color: var(--color-brand);
+  }
+
+  @media (max-width: 640px) {
+    .doc-card {
+      grid-template-columns: auto minmax(0, 1fr);
+      padding: 1.1rem;
+      gap: 1rem;
+    }
+
+    .doc-actions {
+      grid-column: 1 / -1;
+    }
+
+    .doc-actions a {
+      flex: 1;
+      justify-content: center;
+    }
   }
 }
