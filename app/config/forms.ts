@@ -39,6 +39,11 @@ Questions? https://commongrounddavis.com/contact`;
 export const INTEREST_FORM_URL =
   "https://docs.google.com/forms/d/e/1FAIpQLSdOMmiKpiUT57s6clm9SWq3CGLZLPOl-gtKgRylMfAafjvo-A/viewform";
 
+/** Same form in Google's embeddable mode, for the iframe on /join. */
+export const INTEREST_FORM_EMBED_URL = INTEREST_FORM_URL
+  ? `${INTEREST_FORM_URL}?embedded=true`
+  : "";
+
 export const INTEREST_FORM: ClubForm = {
   id: "interest",
   title: INTEREST_FORM_GOOGLE_TITLE,

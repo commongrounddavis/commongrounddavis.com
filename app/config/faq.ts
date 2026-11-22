@@ -48,6 +48,30 @@ export const FORMAT_FAQ: FaqItem[] = [
     a: "It happens, and it's fine. You'll get corrected, you fix it, and then you carry on with your response.",
   },
   {
+    q: "What's expected from the audience?",
+    a: "Listen while people speak. No interrupting, heckling, booing, or cheering. When you ask a question, keep it short, keep it a question, and keep it about ideas, not people.",
+  },
+  {
+    q: "What happens if someone breaks the rules?",
+    a: "Usually just a reminder from the moderator. If it keeps happening, they sit out their next turn, and after that they're asked to leave the meeting. Being removed from the club is rare: two officers have to agree, and they hear the person out first.",
+  },
+  {
+    q: "What gets someone removed right away?",
+    a: "Threats, slurs, harassment, sharing someone's personal info, or recording or posting someone without asking.",
+  },
+  {
+    q: "What if the two sides disagree on the facts?",
+    a: "The moderator doesn't decide who's right. They note that it's disputed, and the debate moves on.",
+  },
+  {
+    q: "What if things get heated?",
+    a: "The moderator can pause the debate for a couple of minutes so everyone can cool down. If someone thinks the moderator is being unfair, another officer takes over.",
+  },
+  {
+    q: "Is anything off limits?",
+    a: "We debate ideas and policies. We never debate whether someone deserves to exist or be in the room.",
+  },
+  {
     q: "Who wins?",
     a: "Nobody. We're not scoring points. After each debate we ask the room whether they understand both sides better than they did before.",
   },
