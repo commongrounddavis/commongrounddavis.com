@@ -33,7 +33,7 @@ export function metaDescription(text: string, max = 180): string {
  * in every page. Empty = analytics off. Page views on client-side navigation are
  * tracked by GA4 Enhanced Measurement ("page changes based on browser history").
  */
-export const GA_MEASUREMENT_ID = "";
+export const GA_MEASUREMENT_ID = "G-NBML053W3W";
 
 /** Shared title + description + Open Graph / Twitter tags for link embeds. */
 export function pageMeta({
