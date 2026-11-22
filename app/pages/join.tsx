@@ -1,7 +1,7 @@
 import type { Route } from "./+types/join";
 import { Faq } from "../components/faq";
 import { JOIN_FAQ } from "../config/faq";
-import { INTEREST_FORM_URL } from "../config/forms";
+import { INTEREST_FORM_EMBED_URL, INTEREST_FORM_URL } from "../config/forms";
 import { CLUB_STATUS } from "../config/meetings";
 import { currentOfficers } from "../config/leadership";
 import { pageMeta } from "../config/site";
@@ -26,9 +26,12 @@ export default function Join(): React.ReactNode {
 
       {INTEREST_FORM_URL ? (
         <>
-          <p className="home-lead" style={{ marginTop: "1rem" }}>
-            {CLUB_STATUS} Fill out the interest form and you’ll be first to hear
-            when meetings start.
+          <p className="join-lead">
+            We will be an official registered student organization by Winter
+            Quarter 2027.
+            <br />
+            We plan to open up our Discord server &amp; start accepting
+            applications to join by mid-December.
           </p>
 
           <div className="join-cta">
@@ -38,9 +41,19 @@ export default function Join(): React.ReactNode {
               rel="noopener"
               className="button-brand"
             >
-              Click to join
+              Open in a new tab
             </a>
+            <p className="join-embed-note">Form not loading? Use the button.</p>
           </div>
+
+          <iframe
+            src={INTEREST_FORM_EMBED_URL}
+            title="Common Ground Davis interest form"
+            className="join-embed"
+            loading="lazy"
+          >
+            Loading…
+          </iframe>
         </>
       ) : (
         <div className="prose-stack" style={{ marginTop: "1.5rem" }}>
