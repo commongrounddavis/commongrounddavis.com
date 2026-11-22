@@ -1,18 +1,10 @@
 # Welcome to the Common Ground Davis web repo (commongrounddavis.com static webpage repo)
 
-<p align="center">
-  <a href="https://commongrounddavis.com">
-    <img src="https://img.shields.io/badge/commongrounddavis.com-1565C0?style=for-the-badge" alt="commongrounddavis.com">
-  </a>
-</p>
+![commongrounddavis.com](https://img.shields.io/badge/commongrounddavis.com-1565C0?style=for-the-badge)
 
+**[commongrounddavis.com](https://commongrounddavis.com)**
 
-<p align="center">
-  <strong><a href="https://commongrounddavis.com">commongrounddavis.com</a></strong>
-</p>
-
-[![License: None](https://img.shields.io/badge/License-None-blue.svg)](LICENSE)
-
+![License: None](https://img.shields.io/badge/License-None-blue.svg)
 
 This repository powers the frontend code behind the Common Ground Davis [commongrounddavis.com](https://commongrounddavis.com) static website.
 
@@ -31,6 +23,7 @@ This repository powers the frontend code behind the Common Ground Davis [commong
   - [Infrastructure / Ownership](#infrastructure--ownership)
   - [Static Generation & GitHub Pages](#static-generation--github-pages)
   - [Cloudflare](#cloudflare)
+  - [Email forwarding (officers@)](#email-forwarding)
 - [Workflow](#workflow)
   - [Branches](#branches)
   - [Working on `develop`](#working-on-develop)
@@ -46,7 +39,6 @@ This repository powers the frontend code behind the Common Ground Davis [commong
 
 The most up-to-date info is at [commongrounddavis.com](https://commongrounddavis.com), but here is a copy of the same info below (it may not be current):
 
-
 ## Condensed Mission Statement / About
 
 Common Ground Davis brings together UC Davis students who disagree politically, into structured debates built around the Steelman argument - before presenting an argument members must accurately present the strongest interpretation of the opposing argument and explain why a reasonable person may hold that belief.
@@ -55,15 +47,17 @@ We are founded & led by two co-leaders who disagree politically and practice wha
 
 ## Full Mission Statement / About
 
+## The Problem
+
 Common Ground Davis is a political debate club at UC Davis for students who disagree and want to understand each other.
 
-Political polarization is a growing problem in the United States and at UC Davis. At the extremes of the right wing, empathy and opposing views are dismissed as "woke," "Marxist," "communist," or "mentally ill." On the far left, disagreement is immediately labeled "fascist," "violent speech," "Nazism," or "anti-human rights." Both sides dismiss honest questions from the other with labels that justify ignoring opposing views and keep people from hearing each other out.
+Political polarization is a growing problem in the United States and at UC Davis. At the extremes of the right wing, empathy and opposing views are dismissed as “woke,” “Marxist,” “communist,” or “mentally ill.” On the far left, disagreement is immediately labeled “fascist,” “violent speech,” “Nazism,” or “anti-human rights.” Both sides dismiss honest questions from the other with labels that justify ignoring opposing views and keep people from hearing each other out.
 
-Not to mention the growing misinformation crisis. Whether you're a Democrat or a Republican, ask yourself this: the reasons you dislike the other side, did you hear them directly from the other side, or are they what you think the other side believes? Most of what we know about the other side comes from our friends or our social media feeds. And even when we do hear it from them, it's usually one clip, one tweet, or the loudest person, not the full argument. So we end up hating the other side over beliefs most of them don't even hold.
+Misinformation makes this worse. Most of what we know about the other side comes from our friends or our social media feeds. Even when we do hear it from them, it is usually one clip out of context or misinterpreted, one tweet, or the loudest person rather than the general average representation of that side, not the full argument. So we end up disliking the other side over beliefs most of them don’t even hold.
 
-Neither side is evil. We're both arguing against strawmen: beliefs that are either false or taken out of context. The fix is hearing the other side's full argument, and that's what we're here for.
+Neither side is evil. Both sides are arguing against strawmen: beliefs that are either false or taken out of context. The fix is hearing the other side’s full argument, and that is what the Club is for.
 
-Examples
+### Examples
 
 Guns
 
@@ -77,9 +71,15 @@ Healthcare
 
 The right hears, "They just want free stuff paid for with your taxes." The left hears, "They don't care if poor people die." But most people pushing for universal healthcare just don't want anyone going broke because they got sick. And most people against it worry about higher taxes and the government running it badly. Both sides want people to get care they can afford.
 
+## **What we believe**
+
 We, at Common Ground Davis, want to change that status quo. We start from one belief: everyone has reasons behind their beliefs, and no one is inherently evil. People don't knowingly do something they believe is wrong without a reason. Either they believe it's the right thing to do, or they accept that it's wrong in isolation but justified in the broader context (e.g., breaking a rule to prevent a bigger harm). Everyone's reasons come from their own lived experiences, so the people we disagree with usually have genuine reasons for their beliefs, even if those reasons look flawed to us.
 
+## **The Steelman argument**
+
 Whether a reason is good is a separate question from whether it exists, and you can't judge it fairly until you understand it. That's why, in our meetings, before a member argues their own side or presents a rebuttal, they must accurately present the strongest version of the opposing argument and explain why a reasonable person might hold it. This is the steelman argument, the direct inverse of the strawman argument. Strawmanning is a tempting shortcut: attacking a weaker / inaccurate version of the other side makes it easy to win a debate, but the victory is illusory and only deepens polarization. At Common Ground Davis, we practice the harder alternative, because understanding is where real conversation begins.
+
+## Our Goal
 
 Our goal isn't to get everyone to agree. It's to build a space where members can disagree and still understand each other. Members leave with sharper arguments, a clearer way to say what they actually think, and less fear of political conversations with their peers. And we hold ourselves to the same standard: this club is founded and co-led by two students who disagree politically, who have civil conversations aimed at understanding each other's views, and who want to promote that culture across our campus.
 
@@ -162,8 +162,9 @@ flowchart LR
 ```
 
 ### Static Generation & GitHub Pages
-- We deploy by using **React Router with `ssr: false` + `prerender`** ([`react-router.config.ts`](react-router.config.ts)). That bakes real HTML for `/`, `/about`, `/debate-format`, `/leadership`, `/join`, `/contact`, `/support`, and `/discord` into `build/client`. The build script then copies React Router’s SPA shell to `404.html` so unknown paths get a real **HTTP 404** from GitHub Pages (SPA boots → `$` route → NotFound UI — not a fake 200).
-- Site knobs live under [`app/config/`](app/config/): `site.ts` (links, Discord invite, maintainers), `meetings.ts`, `leadership.ts` (people + terms), `forms.ts` (Google Form), `format.ts` (debate cycle — also feeds the home page summary), `faq.ts` (FAQ items per page), `about.ts` (README mission, verbatim).
+
+- We deploy by using **React Router with `ssr: false` + `prerender`** ([`react-router.config.ts`](react-router.config.ts)). That bakes real HTML for `/`, `/about`, `/debate-format`, `/leadership`, `/join`, `/contact`, `/support`, `/discord`, `/links`, `/directory`, `/constitution` (and `/aggie-life` once its URL is set in `app/config/links.ts`) into `build/client`. The build script then copies React Router’s SPA shell to `404.html` so unknown paths get a real **HTTP 404** from GitHub Pages (SPA boots → `$` route → NotFound UI — not a fake 200).
+- Site knobs live under [`app/config/`](app/config/): `links.ts` (every club URL — Discord invite, AggieLife, socials, officers email; empty = hidden everywhere), `constitution.ts` (every constitution version + how to add one), `directory.ts` (/directory entries), `site.ts` (SEO, analytics, maintainers), `meetings.ts`, `leadership.ts` (people + terms), `forms.ts` (Google Form), `format.ts` (debate cycle — also feeds the home page summary), `faq.ts` (FAQ items per page), `about.ts` (README mission, verbatim).
 - `public/CNAME` tells Pages the custom domain is `commongrounddavis.com`. `public/.nojekyll` tells Pages not to run Jekyll on the uploaded files (avoids Jekyll mangling asset paths).
 - The generated static content is then hosted on GitHub Pages by **[`.github/workflows/deploy.yml`](.github/workflows/deploy.yml)**: on every push to `production`, Actions runs `npm ci` → `npm run build` → uploads `build/client` → `actions/deploy-pages` → creates an incrementing dated tag/release (`v2026.10.07.1`, `.2` same day, etc.) as `github-actions[bot]`.
 
@@ -181,9 +182,28 @@ flowchart LR
 | --- | --- | --- | --- | --- |
 | `@` (apex) | `A` ×4 | `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153` | DNS only | Official GitHub Pages IPs for apex domains |
 | `www` | `CNAME` | `commongrounddavis.github.io` | DNS only | [commongrounddavis](https://github.com/commongrounddavis) org Pages hostname; GitHub can redirect www ↔ apex once both are set |
-| (email) | — | — | — | **TBD** — Cloudflare Email Routing not configured yet |
+| (email) | `MX` / `TXT` | TODO: fill in | — | Receive-only `officers@commongrounddavis.com`, forwarding to every current officer. See [Email forwarding](#email-forwarding). |
 
 If GitHub ever publishes new Pages IPs, update the apex `A` records to match [GitHub’s custom-domain docs](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site). Vijit Dua (`@vijitdua` on discord `inbox@vijitdua.com` or `vijitdua.com/contact`) is the person who can change these in Cloudflare. 
+
+### Email forwarding
+
+```mermaid
+flowchart LR
+  Sender[Someone emails<br/>officers@commongrounddavis.com] --> Fwd["Forwarding<br/>(TODO: service)"]
+  Fwd --> O1[Officer A<br/>@ucdavis.edu]
+  Fwd --> O2[Officer B<br/>@ucdavis.edu]
+  Fwd --> O3[Officer C<br/>@ucdavis.edu]
+  O1 -->|"reply from own listed address<br/>CC officers@"| Sender
+```
+
+- **What it is:** `officers@commongrounddavis.com` is a **receive-only** address. Every email sent to it is forwarded to all current officers. Nothing is ever sent *from* it.
+- **Where it's set up:** TODO: fill in (service, e.g. Cloudflare Email Routing / Google Group; MX + SPF/TXT records; who can edit the recipient list).
+- **Replying:** officers reply from **their own address as listed in [`app/config/leadership.ts`](app/config/leadership.ts)** and **always CC `officers@`** (Reply all usually does this, since forwarded mail keeps `officers@` in To) so every officer stays in the loop.
+- **What the site promises:** [`/contact`](app/pages/contact.tsx) tells the public that replies only come from the current officers' emails (read automatically from `leadership.ts`) and that `officers@` itself, or any other address, is *not us*. So when officers change:
+  1. Update `leadership.ts` (end the old tenure, add the new one, with the new officer's `email`).
+  2. Update the forwarding recipients to match the same list.
+- **Turning it off:** set `officersEmail` to `""` in [`app/config/links.ts`](app/config/links.ts). /contact falls back to the co-lead directory ("Questions? Email a co-lead.").
 
 ---
 

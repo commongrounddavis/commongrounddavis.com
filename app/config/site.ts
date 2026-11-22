@@ -1,4 +1,5 @@
 import type { MetaDescriptor } from "react-router";
+import { GITHUB_REPO_URL } from "./links";
 
 /** Club links / public contact info that may change. */
 export const SITE_NAME = "Common Ground Davis";
@@ -103,20 +104,6 @@ export function pageMeta({
   return tags;
 }
 
-/**
- * Discord invite. Empty = Discord not live yet (hide from nav; /discord = coming soon).
- * Never leave an old club’s invite here.
- */
-export const DISCORD_INVITE_URL = "https://discord.gg/XpQzH2aasN";
-
-/**
- * Footer social bar. Internal paths use client routing; full URLs open externally.
- * Empty while Discord isn’t live — unhide when DISCORD_INVITE_URL is set.
- */
-export const SOCIAL_LINKS = DISCORD_INVITE_URL
-  ? ([{ label: "Discord", href: "/discord" }] as const)
-  : ([] as const);
-
 /** Website (not club) technical support — shown on /support. */
 export const WEBSITE_SUPPORT_DISCORD_HANDLE = "vijitdua";
 export const WEBSITE_SUPPORT_URL = "https://vijitdua.com/support";
@@ -126,9 +113,7 @@ export const WEBSITE_SUPPORT_LABEL = (() => {
 })();
 export const WEBSITE_MAINTAINER_NAME = "Vijit Dua";
 
-/** Public repo for this site — Source line on /support. */
-export const GITHUB_REPO_URL =
-  "https://github.com/commongrounddavis/commongrounddavis.com";
+/** Public repo label ("github.com/…") — Source line on /support. URL lives in links.ts. */
 export const GITHUB_REPO_LABEL = (() => {
   const url = new URL(GITHUB_REPO_URL);
   return `${url.host}${url.pathname}`.replace(/\/$/, "");

@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router";
-import { AGGIELIFE_URL } from "../config/forms";
-import { DISCORD_INVITE_URL, SITE_NAME } from "../config/site";
+import { hasConstitution } from "../config/constitution";
+import { AGGIELIFE_URL, DISCORD_INVITE_URL } from "../config/links";
+import { SITE_NAME } from "../config/site";
 
 type NavLink = { to: string; label: string };
 
@@ -15,7 +16,8 @@ const RESOURCES: NavLink[] = [
   { to: "/debate-format", label: "Debate format" },
   { to: "/contact", label: "Contact" },
   ...(DISCORD_INVITE_URL ? [{ to: "/discord", label: "Discord" }] : []),
-  ...(AGGIELIFE_URL ? [{ to: AGGIELIFE_URL, label: "AggieLife" }] : []),
+  ...(AGGIELIFE_URL ? [{ to: "/aggie-life", label: "AggieLife" }] : []),
+  ...(hasConstitution() ? [{ to: "/constitution", label: "Constitution" }] : []),
 ];
 
 function isActive(pathname: string, hash: string, to: string) {

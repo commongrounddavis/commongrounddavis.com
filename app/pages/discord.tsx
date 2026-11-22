@@ -1,7 +1,8 @@
 import { useEffect } from "react";
 import { Link } from "react-router";
 import type { Route } from "./+types/discord";
-import { DISCORD_INVITE_URL, pageMeta } from "../config/site";
+import { DISCORD_INVITE_URL } from "../config/links";
+import { pageMeta } from "../config/site";
 
 export const handle = { bare: Boolean(DISCORD_INVITE_URL) };
 

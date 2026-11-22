@@ -18,8 +18,6 @@ export type ClubForm = {
   questions: FormQuestion[];
 };
 
-export const AGGIELIFE_URL = "";
-
 /** Display label for the members-only topic channel (until Discord is live). */
 export const DISCORD_TOPIC_CHANNEL = "#topic-suggestions";
 

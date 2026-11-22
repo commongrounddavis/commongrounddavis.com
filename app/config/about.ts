@@ -9,9 +9,9 @@ export const ABOUT_CONDENSED = [
 ] as const;
 
 export const ABOUT_PROBLEM = [
-  'Political polarization is a growing problem in the United States and at UC Davis. At the extremes of the right wing, empathy and opposing views are dismissed as "woke," "Marxist," "communist," or "mentally ill." On the far left, disagreement is immediately labeled "fascist," "violent speech," "Nazism," or "anti-human rights." Both sides dismiss honest questions from the other with labels that justify ignoring opposing views and keep people from hearing each other out.',
-  "Not to mention the growing misinformation crisis. Whether you're a Democrat or a Republican, ask yourself this: the reasons you dislike the other side, did you hear them directly from the other side, or are they what you think the other side believes? Most of what we know about the other side comes from our friends or our social media feeds. And even when we do hear it from them, it's usually one clip, one tweet, or the loudest person, not the full argument. So we end up hating the other side over beliefs most of them don't even hold.",
-  "Neither side is evil. We're both arguing against strawmen: beliefs that are either false or taken out of context. The fix is hearing the other side's full argument, and that's what we're here for.",
+  "Political polarization is a growing problem in the United States and at UC Davis. At the extremes of the right wing, empathy and opposing views are dismissed as “woke,” “Marxist,” “communist,” or “mentally ill.” On the far left, disagreement is immediately labeled “fascist,” “violent speech,” “Nazism,” or “anti-human rights.” Both sides dismiss honest questions from the other with labels that justify ignoring opposing views and keep people from hearing each other out.",
+  "Misinformation makes this worse. Most of what we know about the other side comes from our friends or our social media feeds. Even when we do hear it from them, it is usually one clip out of context or misinterpreted, one tweet, or the loudest person rather than the general average representation of that side, not the full argument. So we end up disliking the other side over beliefs most of them don’t even hold.",
+  "Neither side is evil. Both sides are arguing against strawmen: beliefs that are either false or taken out of context. The fix is hearing the other side’s full argument, and that is what the Club is for.",
 ] as const;
 
 export type ProblemExample = {
